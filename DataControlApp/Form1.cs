@@ -33,6 +33,10 @@ namespace DataControlApp{
             {
                 MessageBox.Show("there was a problem in your internet");
             }
+            Ogrenci o = new Ogrenci(1,2,3);
+            client.Set("StudentList/" + Convert.ToString(o.isim), o);
+            MessageBox.Show("data inserted successfully");
+
         }
     }
 }
