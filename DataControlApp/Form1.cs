@@ -7,14 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 
-namespace DataControlApp
-{
+namespace DataControlApp{
+
+  
     public partial class Form1 : Form
     {
-        public Form1()
-        {
+
+        IFirebaseConfig ifc = new FirebaseConfig(){
+            AuthSecret = "qlDUgLSDUYM1OqcOnlecbAEDhbFWJI8MCMUtZpYU",
+            BasePath = "https://kkfldatabase-default-rtdb.europe-west1.firebasedatabase.app"
+        };
+            IFirebaseClient client;
+
+        public Form1(){
             InitializeComponent();
+            try
+ {
+                client = new FirebaseClient(ifc);
+            }
+            catch
+            {
+                MessageBox.Show("there was a problem in your internet");
+            }
         }
     }
 }
