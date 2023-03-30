@@ -265,6 +265,7 @@
             this.btn_güncelle.TabIndex = 25;
             this.btn_güncelle.Text = "Güncelle";
             this.btn_güncelle.UseVisualStyleBackColor = true;
+            this.btn_güncelle.Click += new System.EventHandler(this.btn_güncelle_Click);
             // 
             // btn_ara
             // 
@@ -275,6 +276,7 @@
             this.btn_ara.TabIndex = 23;
             this.btn_ara.Text = "Ara";
             this.btn_ara.UseVisualStyleBackColor = true;
+            this.btn_ara.Click += new System.EventHandler(this.btn_ara_Click_1);
             // 
             // btn_ekle
             // 
@@ -285,6 +287,7 @@
             this.btn_ekle.TabIndex = 31;
             this.btn_ekle.Text = "Ekle";
             this.btn_ekle.UseVisualStyleBackColor = true;
+            this.btn_ekle.Click += new System.EventHandler(this.btn_ekle_Click_1);
             // 
             // btn_sil
             // 
@@ -295,6 +298,7 @@
             this.btn_sil.TabIndex = 20;
             this.btn_sil.Text = "Sil";
             this.btn_sil.UseVisualStyleBackColor = true;
+            this.btn_sil.Click += new System.EventHandler(this.btn_sil_Click);
             // 
             // tabPage2
             // 

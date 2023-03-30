@@ -41,8 +41,9 @@ namespace DataControlApp{
             }
             
         }
+
         
-        private void btn_ekle_Click(object sender, EventArgs e)
+        private void btn_ekle_Click_1(object sender, EventArgs e)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
             int girilenNumara = Convert.ToInt32(txt_numara.Text);
@@ -118,20 +119,54 @@ namespace DataControlApp{
             client.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
         }
 
-        private void btn_ara_Click(object sender, EventArgs e)
+        private void btn_ara_Click_1(object sender, EventArgs e)
         {
+            //data çekme null geliyo yorum satirlari böyle kalsin üzerien çalişcam karişmayin (Kadir)
+            /*
 
-            if(txt_isim.Text != null){
-            
-            }else if (txt_soyisim != null){
-
+            if (txt_sirano.Text != null){
+                var result = client.Get("StudentList/12205" );
+                Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
+                MessageBox.Show(Convert.ToString(ogrenci_result.soyisim) , "Bilgilendirme");
             }
-            else if (txt_soyisim != null){
+            else{
+                int sinif_var = 0;
+                int sube_var = 0;
+                int sira_var = 0;
+                for(sinif_var = 9; sinif_var < 13; sinif_var++)
+                {
+                    for (sube_var = 1; sube_var< 5; sube_var++)
+                    {
+                        for (sira_var = 9; sira_var < 100; sira_var++)
+                        {
+                            var yanit = client.Get("StudentList/" + txt_sirano.Text);
+                            Ogrenci ogrenci_var = yanit.ResultAs<Ogrenci>();
+                            if(ogrenci_var == null)
+                            {
+                                break;
+                                MessageBox.Show(Convert.ToString(ogrenci_var.sirano)+" Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
+                            }
+                        }
+                    }
+                }
+              
+                    
+                    
+                    
+                    if (txt_soyisim != null)
+                {
 
-            }
-            else if (txt_soyisim != null){
+                }
+                else if (txt_soyisim != null)
+                {
 
-            }
+                }
+                else if (txt_soyisim != null)
+                {
+
+                }
+}
+          */
 
         }
 
@@ -146,7 +181,7 @@ namespace DataControlApp{
         }
 
 
-        private void btn_temizle_Click(object sender, EventArgs e)
+        private void btn_temizle_Click_1(object sender, EventArgs e)
         {
             temizle();
         }
@@ -213,5 +248,9 @@ namespace DataControlApp{
 
             client.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
         }
+
+      
+
+        
     }
 }
