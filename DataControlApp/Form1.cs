@@ -25,22 +25,100 @@ namespace DataControlApp{
 
         public Form1(){
             InitializeComponent();
+           
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             try
- {
+            {
                 client = new FirebaseClient(ifc);
             }
             catch
             {
                 MessageBox.Show("there was a problem in your internet");
             }
-            Ogrenci o = new Ogrenci(1,2,3);
-            client.Set("StudentList/" + Convert.ToString(o.isim), o);
+            
+        }
+
+        private void btn_ekle_Click(object sender, EventArgs e)
+        {
+            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
+            int girilenNumara = Convert.ToInt32(txt_numara.Text);
+            int girilenSınıf = Convert.ToInt32(txt_sınıf.Text);
+            char girilenSube=Convert.ToChar(txt_sube.Text);
+
+            bool girilenYatılılık = false;
+
+
+            if(txt_yatılılık.Text.ToLower()=="1")
+            {
+                girilenYatılılık = true;
+            }
+            else if(txt_yatılılık.Text.ToLower()=="0")
+            {
+                girilenYatılılık = false;
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
+            }
+
+            
+            
+
+            Ogrenci o = new Ogrenci(girilenSirano,txt_isim.Text,txt_soyisim.Text,girilenNumara,girilenSınıf,girilenSube,girilenYatılılık);
+           
+            client.Set("StudentList/"+"Öğrenci"+girilenSirano , o);
             MessageBox.Show("data inserted successfully");
+
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btn_sil_Click(object sender, EventArgs e)
         {
+            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
+
+
+            client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
+        }
+
+        private void btn_güncelle_Click(object sender, EventArgs e)
+        {
+            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
+            int girilenNumara = Convert.ToInt32(txt_numara.Text);
+            int girilenSınıf = Convert.ToInt32(txt_sınıf.Text);
+            char girilenSube = Convert.ToChar(txt_sube.Text);
+
+            bool girilenYatılılık = false;
+
+
+            if (txt_yatılılık.Text.ToLower() == "1")
+            {
+                girilenYatılılık = true;
+            }
+            else if (txt_yatılılık.Text.ToLower() == "0")
+            {
+                girilenYatılılık = false;
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
+            }
+
+
+
+
+            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık);
+            client.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
+        }
+
+        private void btn_ara_Click(object sender, EventArgs e)
+        {
+
+
+
 
         }
     }
