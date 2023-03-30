@@ -121,8 +121,17 @@ namespace DataControlApp{
         private void btn_ara_Click(object sender, EventArgs e)
         {
 
+            if(txt_isim.Text != null){
+            
+            }else if (txt_soyisim != null){
 
+            }
+            else if (txt_soyisim != null){
 
+            }
+            else if (txt_soyisim != null){
+
+            }
 
         }
 
