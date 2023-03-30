@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_temizle = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_isim = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.btn_ara = new System.Windows.Forms.Button();
             this.btn_ekle = new System.Windows.Forms.Button();
             this.btn_sil = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_öisim = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -120,28 +120,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Öğrenci";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.txt_öisim);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.txt_ösoyisim);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.txt_ders);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.txt_ösirano);
-            this.tabPage2.Controls.Add(this.btn_ögüncelle);
-            this.tabPage2.Controls.Add(this.btn_öara);
-            this.tabPage2.Controls.Add(this.btn_öekle);
-            this.tabPage2.Controls.Add(this.btn_ösil);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(552, 465);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Öğretmen";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btn_temizle
             // 
@@ -317,6 +295,28 @@
             this.btn_sil.TabIndex = 20;
             this.btn_sil.Text = "Sil";
             this.btn_sil.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.txt_öisim);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.txt_ösoyisim);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.txt_ders);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.txt_ösirano);
+            this.tabPage2.Controls.Add(this.btn_ögüncelle);
+            this.tabPage2.Controls.Add(this.btn_öara);
+            this.tabPage2.Controls.Add(this.btn_öekle);
+            this.tabPage2.Controls.Add(this.btn_ösil);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(552, 465);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Öğretmen";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -536,6 +536,7 @@
             this.btn_idaregünc.TabIndex = 43;
             this.btn_idaregünc.Text = "Güncelle";
             this.btn_idaregünc.UseVisualStyleBackColor = true;
+            this.btn_idaregünc.Click += new System.EventHandler(this.btn_idaregünc_Click);
             // 
             // btn_idarara
             // 
@@ -567,6 +568,7 @@
             this.btn_idaresil.TabIndex = 38;
             this.btn_idaresil.Text = "Sil";
             this.btn_idaresil.UseVisualStyleBackColor = true;
+            this.btn_idaresil.Click += new System.EventHandler(this.btn_idaresil_Click);
             // 
             // Form1
             // 
