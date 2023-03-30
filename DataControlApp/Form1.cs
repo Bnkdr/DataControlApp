@@ -150,5 +150,68 @@ namespace DataControlApp{
         {
             temizle();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+
+            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text);
+
+            client.Set("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano, öğretmen);
+
+            MessageBox.Show("Data inserted successfully", "Bilgilendirme");
+
+            temizle();
+
+        }
+
+        private void btn_ösil_Click(object sender, EventArgs e)
+        {
+            int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+
+            client.Delete("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano);
+
+
+        }
+
+        private void btn_ögüncelle_Click(object sender, EventArgs e)
+        {
+            int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+
+            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text);
+            client.Update("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano, öğretmen);
+
+        }
+
+        private void btn_idareekle_Click(object sender, EventArgs e)
+        {
+            int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
+
+            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text);
+
+            client.Set("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
+
+            MessageBox.Show("Data inserted successfully;", "Bilgilendirme");
+
+            temizle();
+
+
+        }
+
+        private void btn_idaresil_Click(object sender, EventArgs e)
+        {
+            int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
+
+            client.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
+        }
+
+        private void btn_idaregünc_Click(object sender, EventArgs e)
+        {
+            int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
+
+            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text);
+
+            client.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
+        }
     }
 }
