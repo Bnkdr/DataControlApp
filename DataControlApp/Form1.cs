@@ -130,8 +130,8 @@ namespace DataControlApp{
         {
             txt_isim.Text = string.Empty;
             txt_soyisim.Text = string.Empty;
-            txt_sınıf.Text = string.Empty;
-            txt_sube.Text = string.Empty;
+          //  txt_sınıf.Text = string.Empty;
+          //  txt_sube.Text = string.Empty;
             txt_numara.Text = string.Empty;
             txt_yatılılık.Text = string.Empty;
         }
