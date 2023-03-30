@@ -66,7 +66,7 @@
             this.btn_ekle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_ekle.Name = "btn_ekle";
             this.btn_ekle.Size = new System.Drawing.Size(200, 33);
-            this.btn_ekle.TabIndex = 1;
+            this.btn_ekle.TabIndex = 8;
             this.btn_ekle.Text = "Ekle";
             this.btn_ekle.UseVisualStyleBackColor = true;
             this.btn_ekle.Click += new System.EventHandler(this.btn_ekle_Click);
@@ -99,7 +99,7 @@
             this.txt_sirano.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_sirano.Name = "txt_sirano";
             this.txt_sirano.Size = new System.Drawing.Size(201, 20);
-            this.txt_sirano.TabIndex = 5;
+            this.txt_sirano.TabIndex = 1;
             // 
             // label1
             // 
@@ -145,7 +145,7 @@
             this.txt_sube.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_sube.Name = "txt_sube";
             this.txt_sube.Size = new System.Drawing.Size(201, 20);
-            this.txt_sube.TabIndex = 9;
+            this.txt_sube.TabIndex = 6;
             // 
             // label4
             // 
@@ -163,7 +163,7 @@
             this.txt_sınıf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_sınıf.Name = "txt_sınıf";
             this.txt_sınıf.Size = new System.Drawing.Size(201, 20);
-            this.txt_sınıf.TabIndex = 11;
+            this.txt_sınıf.TabIndex = 5;
             // 
             // label5
             // 
@@ -181,7 +181,7 @@
             this.txt_numara.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_numara.Name = "txt_numara";
             this.txt_numara.Size = new System.Drawing.Size(201, 20);
-            this.txt_numara.TabIndex = 13;
+            this.txt_numara.TabIndex = 4;
             // 
             // label6
             // 
@@ -199,7 +199,7 @@
             this.txt_soyisim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_soyisim.Name = "txt_soyisim";
             this.txt_soyisim.Size = new System.Drawing.Size(201, 20);
-            this.txt_soyisim.TabIndex = 15;
+            this.txt_soyisim.TabIndex = 3;
             // 
             // label7
             // 
@@ -217,7 +217,7 @@
             this.txt_isim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_isim.Name = "txt_isim";
             this.txt_isim.Size = new System.Drawing.Size(201, 20);
-            this.txt_isim.TabIndex = 17;
+            this.txt_isim.TabIndex = 2;
             // 
             // btn_temizle
             // 

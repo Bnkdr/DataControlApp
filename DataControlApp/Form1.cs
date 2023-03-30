@@ -41,7 +41,7 @@ namespace DataControlApp{
             }
             
         }
-
+        
         private void btn_ekle_Click(object sender, EventArgs e)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
@@ -65,14 +65,18 @@ namespace DataControlApp{
                 MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
             }
 
-            
-            
+            var result = client.Get("IndexCount");
+            int i = result.ResultAs<int>();
+
+            i++;
 
             Ogrenci o = new Ogrenci(girilenSirano,txt_isim.Text,txt_soyisim.Text,girilenNumara,girilenSınıf,girilenSube,girilenYatılılık);
            
             client.Set("StudentList/"+"Öğrenci"+girilenSirano , o);
             MessageBox.Show("data inserted successfully");
+           // client.Update("IndexCount/", Convert.ToInt32(i));
 
+            temizle();
 
         }
 
