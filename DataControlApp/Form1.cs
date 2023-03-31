@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp;
 using FireSharp.Config;
+using FireSharp.Response;
 using FireSharp.Interfaces;
 
 namespace DataControlApp{
@@ -121,13 +122,13 @@ namespace DataControlApp{
 
         private void btn_ara_Click_1(object sender, EventArgs e)
         {
-            //data çekme null geliyo yorum satirlari böyle kalsin üzerien çalişcam karişmayin (Kadir)
-            /*
-
-            if (txt_sirano.Text != null){
-                var result = client.Get("StudentList/12205" );
+             // Kadir was here haha  
+            //sira no bazli öğrenci sorgulama
+            //yapim aşamasında ben kendim devam edicem  for döngüsünde tüm kişiler gözüküyo bunu listeye aktarmak kaldi birde sorgulama fonksiyonlarini yapmak (kadir)
+            if (txt_sirano.Text != ""){
+                FirebaseResponse result = client.Get(@"StudentList/Öğrenci"+txt_sirano.Text);
                 Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
-                MessageBox.Show(Convert.ToString(ogrenci_result.soyisim) , "Bilgilendirme");
+                MessageBox.Show("İsmi : " + Convert.ToString(ogrenci_result.isim) + " " + " Soyismi : " + Convert.ToString(ogrenci_result.soyisim) + " Numarasi : " + Convert.ToString(ogrenci_result.numara), "Bilgilendirme");
             }
             else{
                 int sinif_var = 0;
@@ -137,14 +138,39 @@ namespace DataControlApp{
                 {
                     for (sube_var = 1; sube_var< 5; sube_var++)
                     {
-                        for (sira_var = 9; sira_var < 100; sira_var++)
+                        for (sira_var = 1; sira_var < 100; sira_var++)
                         {
-                            var yanit = client.Get("StudentList/" + txt_sirano.Text);
-                            Ogrenci ogrenci_var = yanit.ResultAs<Ogrenci>();
-                            if(ogrenci_var == null)
+                            String siraString;
+                            if (sira_var < 10)
+                            {
+                                siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + "0" +Convert.ToString(sira_var);
+                            }
+                            else
+                            {
+                                siraString =Convert.ToString(sinif_var)+Convert.ToString(sube_var)+Convert.ToString(sira_var);
+                            }
+
+
+                            if (client.Get(@"StudentList/Öğrenci" +siraString).ResultAs<Ogrenci>() == null)
                             {
                                 break;
-                                MessageBox.Show(Convert.ToString(ogrenci_var.sirano)+" Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
+                                MessageBox.Show(siraString + " Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
+                            }
+                            else
+                            {
+                                var yanit = client.Get(@"StudentList/Öğrenci" + siraString);
+                                Ogrenci ogrenci_var = yanit.ResultAs<Ogrenci>();
+                                String ismi = ogrenci_var.isim;
+                                String soyismi = ogrenci_var.soyisim;
+                                int numarasi = ogrenci_var.numara;
+                                // MessageBox.Show("İsmi : " + Convert.ToString(ismi) + " " + "Soyismi : " + Convert.ToString(soyismi) + "Numarasi : " + Convert.ToString(numarasi), "Bilgilendirme");
+                                // MessageBox.Show(Convert.ToString(ogrenci_var.isim) + " " + Convert.ToString(ogrenci_var.soyisim), "Bilgilendirme");
+                                // MessageBox.Show(siraString, "Bilgilendirme");
+                                if (ogrenci_var == null)
+                                {
+                                    break;
+                                    MessageBox.Show(Convert.ToString(ogrenci_var.sirano) + " Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
+                                }
                             }
                         }
                     }
@@ -153,20 +179,9 @@ namespace DataControlApp{
                     
                     
                     
-                    if (txt_soyisim != null)
-                {
-
-                }
-                else if (txt_soyisim != null)
-                {
-
-                }
-                else if (txt_soyisim != null)
-                {
-
-                }
+                
 }
-          */
+          
 
         }
 
@@ -181,7 +196,7 @@ namespace DataControlApp{
         }
 
 
-        private void btn_temizle_Click_1(object sender, EventArgs e)
+        private void btn_temizle_Click(object sender, EventArgs e)
         {
             temizle();
         }
@@ -249,7 +264,7 @@ namespace DataControlApp{
             client.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
         }
 
-      
+       
 
         
     }
