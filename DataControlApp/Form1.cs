@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using System.ComponentModel.Design.Serialization;
 
 namespace DataControlApp{
 
@@ -189,8 +190,9 @@ namespace DataControlApp{
         private void button4_Click(object sender, EventArgs e)
         {
             int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+            int girilenÖğretmenDoğumTarihi = Convert.ToInt32(txt_ödoğumtarihi.Text);
 
-            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text);
+            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text, girilenÖğretmenDoğumTarihi);
 
             client.Set("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano, öğretmen);
 
@@ -212,8 +214,10 @@ namespace DataControlApp{
         private void btn_ögüncelle_Click(object sender, EventArgs e)
         {
             int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+            int girilenÖğretmenDoğumTarihi = Convert.ToInt32(txt_ödoğumtarihi.Text);
 
-            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text);
+
+            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text,girilenÖğretmenDoğumTarihi);
             client.Update("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano, öğretmen);
 
         }
