@@ -75,6 +75,8 @@
             this.btn_idarara = new System.Windows.Forms.Button();
             this.btn_idareekle = new System.Windows.Forms.Button();
             this.btn_idaresil = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txt_ödoğumtarihi = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -303,6 +305,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.txt_ödoğumtarihi);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.txt_öisim);
             this.tabPage2.Controls.Add(this.label9);
@@ -397,7 +401,7 @@
             // 
             // btn_ögüncelle
             // 
-            this.btn_ögüncelle.Location = new System.Drawing.Point(165, 313);
+            this.btn_ögüncelle.Location = new System.Drawing.Point(170, 347);
             this.btn_ögüncelle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ögüncelle.Name = "btn_ögüncelle";
             this.btn_ögüncelle.Size = new System.Drawing.Size(200, 33);
@@ -408,7 +412,7 @@
             // 
             // btn_öara
             // 
-            this.btn_öara.Location = new System.Drawing.Point(165, 350);
+            this.btn_öara.Location = new System.Drawing.Point(170, 384);
             this.btn_öara.Margin = new System.Windows.Forms.Padding(2);
             this.btn_öara.Name = "btn_öara";
             this.btn_öara.Size = new System.Drawing.Size(200, 33);
@@ -418,7 +422,7 @@
             // 
             // btn_öekle
             // 
-            this.btn_öekle.Location = new System.Drawing.Point(165, 239);
+            this.btn_öekle.Location = new System.Drawing.Point(170, 273);
             this.btn_öekle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_öekle.Name = "btn_öekle";
             this.btn_öekle.Size = new System.Drawing.Size(200, 33);
@@ -429,7 +433,7 @@
             // 
             // btn_ösil
             // 
-            this.btn_ösil.Location = new System.Drawing.Point(165, 276);
+            this.btn_ösil.Location = new System.Drawing.Point(170, 310);
             this.btn_ösil.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ösil.Name = "btn_ösil";
             this.btn_ösil.Size = new System.Drawing.Size(200, 33);
@@ -575,6 +579,24 @@
             this.btn_idaresil.UseVisualStyleBackColor = true;
             this.btn_idaresil.Click += new System.EventHandler(this.btn_idaresil_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(37, 207);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(70, 13);
+            this.label16.TabIndex = 39;
+            this.label16.Text = "Doğum Tarihi";
+            // 
+            // txt_ödoğumtarihi
+            // 
+            this.txt_ödoğumtarihi.Location = new System.Drawing.Point(170, 205);
+            this.txt_ödoğumtarihi.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_ödoğumtarihi.Name = "txt_ödoğumtarihi";
+            this.txt_ödoğumtarihi.Size = new System.Drawing.Size(201, 20);
+            this.txt_ödoğumtarihi.TabIndex = 38;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -645,6 +667,8 @@
         private System.Windows.Forms.Button btn_idarara;
         private System.Windows.Forms.Button btn_idareekle;
         private System.Windows.Forms.Button btn_idaresil;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txt_ödoğumtarihi;
     }
 }
 
