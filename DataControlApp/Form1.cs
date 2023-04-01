@@ -21,9 +21,18 @@ namespace DataControlApp{
 
         IFirebaseConfig ifc = new FirebaseConfig(){
             AuthSecret = "qlDUgLSDUYM1OqcOnlecbAEDhbFWJI8MCMUtZpYU",
-            BasePath = "https://kkfldatabase-default-rtdb.europe-west1.firebasedatabase.app"
+            BasePath = "https://kkfldatabase-default-rtdb.europe-west1.firebasedatabase.app" 
+
         };
             IFirebaseClient client;
+
+        IFirebaseConfig ifc2 = new FirebaseConfig()
+        {
+            AuthSecret = "2inVCykQM5Pd7bwsaCbMYh38tXU8WcQkMSs1qRhl",
+            BasePath = "https://privatedata-506ba-default-rtdb.firebaseio.com/"
+        };
+
+        IFirebaseClient client2;
 
         public Form1(){
             InitializeComponent();
@@ -36,6 +45,7 @@ namespace DataControlApp{
             try
             {
                 client = new FirebaseClient(ifc);
+                client2 = new FirebaseClient(ifc2);
             }
             catch
             {
@@ -47,10 +57,17 @@ namespace DataControlApp{
         
         private void btn_ekle_Click_1(object sender, EventArgs e)
         {
+            
+
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
             int girilenNumara = Convert.ToInt32(txt_numara.Text);
             int girilenSınıf = Convert.ToInt32(txt_sınıf.Text);
             char girilenSube=Convert.ToChar(txt_sube.Text);
+            long girilenTelno = Convert.ToInt64(txt_telno.Text);
+            long girilenAnnetelno = Convert.ToInt64(txt_annetelno.Text);
+            long girilenBabatelno = Convert.ToInt64(txt_babatelno.Text);
+            double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
+            long girilenNOno = 0;
 
             bool girilenYatılılık = false;
 
@@ -68,14 +85,15 @@ namespace DataControlApp{
                 MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
             }
 
-            var result = client.Get("IndexCount");
-            int i = result.ResultAs<int>();
+            //var result = client.Get("IndexCount");
+            //int i = result.ResultAs<int>();
 
-            i++;
+           // i++;
 
-            Ogrenci o = new Ogrenci(girilenSirano,txt_isim.Text,txt_soyisim.Text,girilenNumara,girilenSınıf,girilenSube,girilenYatılılık);
+            Ogrenci o = new Ogrenci(girilenSirano,txt_isim.Text,txt_soyisim.Text,girilenNumara,girilenSınıf,girilenSube,girilenYatılılık,girilenTelno,txt_veliisim.Text,txt_velimeslek.Text,girilenAnnetelno,girilenBabatelno,txt_hobiler.Text,girilenYüzdelik,girilenNOno);
            
             client.Set("StudentList/"+"Öğrenci"+girilenSirano , o);
+            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o);
             MessageBox.Show("data inserted successfully");
            // client.Update("IndexCount/", Convert.ToInt32(i));
 
@@ -89,6 +107,8 @@ namespace DataControlApp{
 
 
             client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
+            client2.Delete("StudentList/" + "Öğrenci" + girilenSirano);
+
         }
 
         private void btn_güncelle_Click(object sender, EventArgs e)
@@ -97,6 +117,11 @@ namespace DataControlApp{
             int girilenNumara = Convert.ToInt32(txt_numara.Text);
             int girilenSınıf = Convert.ToInt32(txt_sınıf.Text);
             char girilenSube = Convert.ToChar(txt_sube.Text);
+            long girilenTelno = Convert.ToInt64(txt_telno.Text);
+            long girilenAnnetelno = Convert.ToInt64(txt_annetelno.Text);
+            long girilenBabatelno = Convert.ToInt64(txt_babatelno.Text);
+            double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
+            long girilenNOno = 0;
 
             bool girilenYatılılık = false;
 
@@ -117,8 +142,11 @@ namespace DataControlApp{
 
 
 
-            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık);
+            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_veliisim.Text, txt_velimeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno);
             client.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
+            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o);
+            client2.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
+
         }
 
         private void btn_ara_Click_1(object sender, EventArgs e)
