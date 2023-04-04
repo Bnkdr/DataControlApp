@@ -95,6 +95,8 @@
             this.txt_babameslek = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txt_babaisim = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txt_tcno = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -114,6 +116,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label26);
+            this.tabPage1.Controls.Add(this.txt_tcno);
             this.tabPage1.Controls.Add(this.label25);
             this.tabPage1.Controls.Add(this.txt_babaisim);
             this.tabPage1.Controls.Add(this.label24);
@@ -795,6 +799,24 @@
             this.txt_babaisim.Size = new System.Drawing.Size(201, 20);
             this.txt_babaisim.TabIndex = 55;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(29, 225);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(71, 13);
+            this.label26.TabIndex = 58;
+            this.label26.Text = "T.C Kimlik No";
+            // 
+            // txt_tcno
+            // 
+            this.txt_tcno.Location = new System.Drawing.Point(162, 223);
+            this.txt_tcno.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tcno.Name = "txt_tcno";
+            this.txt_tcno.Size = new System.Drawing.Size(201, 20);
+            this.txt_tcno.TabIndex = 57;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -885,6 +907,8 @@
         private System.Windows.Forms.TextBox txt_babaisim;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txt_babameslek;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txt_tcno;
     }
 }
 
