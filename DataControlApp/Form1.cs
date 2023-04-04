@@ -88,12 +88,13 @@ namespace DataControlApp{
             //var result = client.Get("IndexCount");
             //int i = result.ResultAs<int>();
 
-           // i++;
+            // i++;
 
-            Ogrenci o = new Ogrenci(girilenSirano,txt_isim.Text,txt_soyisim.Text,girilenNumara,girilenSınıf,girilenSube,girilenYatılılık,girilenTelno,txt_veliisim.Text,txt_velimeslek.Text,girilenAnnetelno,girilenBabatelno,txt_hobiler.Text,girilenYüzdelik,girilenNOno);
-           
+            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text);
+
             client.Set("StudentList/"+"Öğrenci"+girilenSirano , o);
-            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o);
+            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             MessageBox.Show("data inserted successfully");
            // client.Update("IndexCount/", Convert.ToInt32(i));
 
@@ -141,11 +142,11 @@ namespace DataControlApp{
 
 
 
-
-            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_veliisim.Text, txt_velimeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text);
+            Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
             client.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
-            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o);
-            client2.Update("StudentList/" + "Öğrenci" + girilenSirano, o);
+            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
+            client2.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
 
         }
 
