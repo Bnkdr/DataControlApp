@@ -41,22 +41,29 @@ namespace DataControlApp{
 
         }
 
-        List<Ogrenci> öğrenciler_list = new List<Ogrenci>();
+        List<Ogrenci> öğrenciler_list;
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
+            try{
                 client = new FirebaseClient(ifc);
                 client2 = new FirebaseClient(ifc2);
 
             }
-            catch
-            {
+            catch{
                 MessageBox.Show("there was a problem in your internet");
             }
             
             int count = 0;
-
+            FirebaseResponse res = client.Get(@"StudentList");
+            Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
+            öğrenciler_list = new List<Ogrenci>(data.Values);
+            foreach(Ogrenci og in öğrenciler_list)
+            {
+                count++;
+                MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
+                
+            }
+            
            
           //  öğrenciler_list = client.Get(@"StudentList/").ResultAs<List<Ogrenci>>();
 
