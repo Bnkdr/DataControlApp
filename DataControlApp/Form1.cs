@@ -12,6 +12,7 @@ using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
 using System.ComponentModel.Design.Serialization;
+using Newtonsoft.Json;
 
 namespace DataControlApp{
 
@@ -40,19 +41,73 @@ namespace DataControlApp{
 
         }
 
+        List<Ogrenci> öğrenciler_list = new List<Ogrenci>();
         private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
                 client = new FirebaseClient(ifc);
                 client2 = new FirebaseClient(ifc2);
+
             }
             catch
             {
                 MessageBox.Show("there was a problem in your internet");
             }
             
-        }
+            int count = 0;
+
+           
+          //  öğrenciler_list = client.Get(@"StudentList/").ResultAs<List<Ogrenci>>();
+
+            /*
+            int sinif_var = 0;
+            int sube_var = 0;
+            int sira_var = 0;
+         
+            for (sinif_var = 9; sinif_var < 13; sinif_var++)
+            {
+                
+                for (sube_var = 1; sube_var < 5; sube_var++)
+                {
+                    for (sira_var = 1; sira_var < 40; sira_var++)
+                    {
+                        String siraString;
+                        if (sira_var < 10)
+                        {
+                            siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + "0" + Convert.ToString(sira_var);
+                            FirebaseResponse res = client.Get(@"StudentList" + ("Öğrenci" + siraString));
+                            Ogrenci öğrnci = res.ResultAs<Ogrenci>();
+                           
+                            öğrenciler_list.Add(öğrnci);
+                        }
+                        else
+                        {
+                            siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + Convert.ToString(sira_var);
+                           FirebaseResponse res= client.Get(@"StudentList" + ("Öğrenci" + siraString));
+                            Ogrenci öğrnci = res.ResultAs<Ogrenci>();
+                            
+                            öğrenciler_list.Add(öğrnci);
+                        }
+
+
+                    }
+                }
+            }
+            count = öğrenciler_list.Count();
+
+            if(öğrenciler_list!=null)
+            {
+               MessageBox.Show("Veritabanı Eşlendi."+" "+count, "Bilgilendirme");
+            }
+        else
+            {
+                MessageBox.Show("Veritabanı Eşlenemedi.", "Hata");
+            }
+
+           
+            */
+            }
 
         
         private void btn_ekle_Click_1(object sender, EventArgs e)
@@ -158,7 +213,41 @@ namespace DataControlApp{
             if (txt_sirano.Text != ""){
                 FirebaseResponse result = client.Get(@"StudentList/Öğrenci"+txt_sirano.Text);
                 Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
-                MessageBox.Show("İsmi : " + Convert.ToString(ogrenci_result.isim) + " " + " Soyismi : " + Convert.ToString(ogrenci_result.soyisim) + " Numarasi : " + Convert.ToString(ogrenci_result.numara), "Bilgilendirme");
+                string ismi = Convert.ToString(ogrenci_result.isim);
+                string soyismi = Convert.ToString(ogrenci_result.soyisim);
+                string numarasi = Convert.ToString(ogrenci_result.numara);
+                string sinifi = Convert.ToString(ogrenci_result.sınıf);
+                string şubesi = Convert.ToString(ogrenci_result.şube);
+                string yatililik_durumu = Convert.ToString(ogrenci_result.yatılılık);
+                string tc_numarasi = Convert.ToString(ogrenci_result.tcno);
+                string telefon_numarasi = Convert.ToString(ogrenci_result.telno);
+                string anne_ismi = Convert.ToString(ogrenci_result.anneisim);
+                string anne_telefon_numarsi = Convert.ToString(ogrenci_result.annetelno);
+                string anne_mesleği = Convert.ToString(ogrenci_result.annemeslek);
+                string baba_ismi = Convert.ToString(ogrenci_result.babaisim);
+                string baba_mesleği = Convert.ToString(ogrenci_result.babameslek);
+                string baba_telefon_numarasi = Convert.ToString(ogrenci_result.babatelno);
+                string hobileri = Convert.ToString(ogrenci_result.hobi);
+                string sira_nosu = Convert.ToString(ogrenci_result.sirano);
+                string yüzdeliği = Convert.ToString(ogrenci_result.girişyüzdesi);
+                txt_isim.Text = ismi;
+                txt_soyisim.Text = soyismi;
+                txt_sirano.Text = sira_nosu;
+                txt_numara.Text = numarasi;
+                txt_sınıf.Text = sinifi;
+                txt_sube.Text = şubesi;
+                txt_yatılılık.Text = yatililik_durumu;
+                txt_tcno.Text = tc_numarasi;
+                txt_telno.Text = telefon_numarasi;
+                txt_anneisim.Text = anne_ismi;
+                txt_annetelno.Text = anne_telefon_numarsi;
+                txt_annemeslek.Text = anne_mesleği;
+                txt_babaisim.Text = baba_ismi;
+                txt_babameslek.Text = baba_mesleği;
+                txt_babatelno.Text = baba_telefon_numarasi;
+                txt_hobiler.Text = hobileri;
+                txt_yüzde.Text = yüzdeliği;
+                // MessageBox.Show("İsmi : " + Convert.ToString(ogrenci_result.isim) + " " + " Soyismi : " + Convert.ToString(ogrenci_result.soyisim) + " Numarasi : " + Convert.ToString(ogrenci_result.numara), "Bilgilendirme");
             }
             else{
                 int sinif_var = 0;
