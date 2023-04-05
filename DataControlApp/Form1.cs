@@ -54,6 +54,10 @@ namespace DataControlApp{
             }
 
             fetchData(client);
+            
+          //  foreach(Ogrenci o in öğrenciler_list){
+          //      MessageBox.Show(o.sirano + "  "+o.isim + "  " + o.soyisim+" "+o.numara);
+         //   }
          
         }
 
@@ -199,6 +203,7 @@ namespace DataControlApp{
 
             client.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
+            fetchData(client);
             MessageBox.Show("data inserted successfully");
             // client.Update("IndexCount/", Convert.ToInt32(i));
 
@@ -239,7 +244,7 @@ namespace DataControlApp{
             client.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
-
+            fetchData(client);
         }
 
         private void DeleteData_ogrenci(IFirebaseClient client)
@@ -249,7 +254,7 @@ namespace DataControlApp{
 
             client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
             client2.Delete("StudentList/" + "Öğrenci" + girilenSirano);
-
+            fetchData(client);
         }
 
         private void InsertData_öğretmen(IFirebaseClient client)
@@ -314,12 +319,13 @@ namespace DataControlApp{
             FirebaseResponse res = client.Get(@"StudentList");
             Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
             öğrenciler_list = new List<Ogrenci>(data.Values);
-            foreach (Ogrenci og in öğrenciler_list)
-            {
+            foreach (Ogrenci og in öğrenciler_list){
                 count++;
+               
                 //    MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
 
             }
+            client.Set(@"IndexCount", count);
         }
         
     }
