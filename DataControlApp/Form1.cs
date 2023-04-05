@@ -52,79 +52,121 @@ namespace DataControlApp{
             catch{
                 MessageBox.Show("there was a problem in your internet");
             }
-            
-            int count = 0;
-            FirebaseResponse res = client.Get(@"StudentList");
-            Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
-            öğrenciler_list = new List<Ogrenci>(data.Values);
-            foreach(Ogrenci og in öğrenciler_list)
-            {
-                count++;
-                MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
-                
-            }
-            
-           
-          //  öğrenciler_list = client.Get(@"StudentList/").ResultAs<List<Ogrenci>>();
 
-            /*
-            int sinif_var = 0;
-            int sube_var = 0;
-            int sira_var = 0;
+            fetchData(client);
          
-            for (sinif_var = 9; sinif_var < 13; sinif_var++)
-            {
-                
-                for (sube_var = 1; sube_var < 5; sube_var++)
-                {
-                    for (sira_var = 1; sira_var < 40; sira_var++)
-                    {
-                        String siraString;
-                        if (sira_var < 10)
-                        {
-                            siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + "0" + Convert.ToString(sira_var);
-                            FirebaseResponse res = client.Get(@"StudentList" + ("Öğrenci" + siraString));
-                            Ogrenci öğrnci = res.ResultAs<Ogrenci>();
-                           
-                            öğrenciler_list.Add(öğrnci);
-                        }
-                        else
-                        {
-                            siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + Convert.ToString(sira_var);
-                           FirebaseResponse res= client.Get(@"StudentList" + ("Öğrenci" + siraString));
-                            Ogrenci öğrnci = res.ResultAs<Ogrenci>();
-                            
-                            öğrenciler_list.Add(öğrnci);
-                        }
-
-
-                    }
-                }
-            }
-            count = öğrenciler_list.Count();
-
-            if(öğrenciler_list!=null)
-            {
-               MessageBox.Show("Veritabanı Eşlendi."+" "+count, "Bilgilendirme");
-            }
-        else
-            {
-                MessageBox.Show("Veritabanı Eşlenemedi.", "Hata");
-            }
-
-           
-            */
-            }
+        }
 
         
-        private void btn_ekle_Click_1(object sender, EventArgs e)
-        {
-            
+        private void btn_ekle_Click_1(object sender, EventArgs e){
+            InsertData_ogrenci(client);
+        }
 
+        private void btn_sil_Click(object sender, EventArgs e){
+            DeleteData_ogrenci(client);
+        }
+
+        private void btn_güncelle_Click(object sender, EventArgs e){
+            UpdateData_ogrenci(client);
+        }
+
+        private void btn_ara_Click_1(object sender, EventArgs e){
+             // Kadir was here haha  
+            if (txt_sirano.Text != ""){
+                SearchOgrenciById(client, txt_sirano.Text);
+            }
+         }
+          
+
+        
+
+        public void temizle()
+        {
+            txt_isim.Text = string.Empty;
+            txt_soyisim.Text = string.Empty;
+          //  txt_sınıf.Text = string.Empty;
+          //  txt_sube.Text = string.Empty;
+            txt_numara.Text = string.Empty;
+            txt_yatılılık.Text = string.Empty;
+        }
+
+
+        private void btn_temizle_Click(object sender, EventArgs e)
+        {
+            temizle();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InsertData_öğretmen(client);
+        }
+
+        private void btn_ösil_Click(object sender, EventArgs e)
+        {
+            DeleteData_öğretmen(client);
+        }
+
+        private void btn_ögüncelle_Click(object sender, EventArgs e){
+            UpdateData_öğretmen(client);
+        }
+
+        private void btn_idareekle_Click(object sender, EventArgs e){
+            InsertData_idare(client);
+        }
+
+        private void btn_idaresil_Click(object sender, EventArgs e){
+            DeleteData_idare(client);
+        }
+
+        private void btn_idaregünc_Click(object sender, EventArgs e){
+            UpdateData_idare(client);
+        }
+
+        private void SearchOgrenciById(IFirebaseClient client, String sira){
+            FirebaseResponse result = client.Get(@"StudentList/Öğrenci" + sira);
+            Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
+            string ismi = Convert.ToString(ogrenci_result.isim);
+            string soyismi = Convert.ToString(ogrenci_result.soyisim);
+            string numarasi = Convert.ToString(ogrenci_result.numara);
+            string sinifi = Convert.ToString(ogrenci_result.sınıf);
+            string şubesi = Convert.ToString(ogrenci_result.şube);
+            string yatililik_durumu = Convert.ToString(ogrenci_result.yatılılık);
+            string tc_numarasi = Convert.ToString(ogrenci_result.tcno);
+            string telefon_numarasi = Convert.ToString(ogrenci_result.telno);
+            string anne_ismi = Convert.ToString(ogrenci_result.anneisim);
+            string anne_telefon_numarsi = Convert.ToString(ogrenci_result.annetelno);
+            string anne_mesleği = Convert.ToString(ogrenci_result.annemeslek);
+            string baba_ismi = Convert.ToString(ogrenci_result.babaisim);
+            string baba_mesleği = Convert.ToString(ogrenci_result.babameslek);
+            string baba_telefon_numarasi = Convert.ToString(ogrenci_result.babatelno);
+            string hobileri = Convert.ToString(ogrenci_result.hobi);
+            string sira_nosu = Convert.ToString(ogrenci_result.sirano);
+            string yüzdeliği = Convert.ToString(ogrenci_result.girişyüzdesi);
+            txt_isim.Text = ismi;
+            txt_soyisim.Text = soyismi;
+            txt_sirano.Text = sira_nosu;
+            txt_numara.Text = numarasi;
+            txt_sınıf.Text = sinifi;
+            txt_sube.Text = şubesi;
+            txt_yatılılık.Text = yatililik_durumu;
+            txt_tcno.Text = tc_numarasi;
+            txt_telno.Text = telefon_numarasi;
+            txt_anneisim.Text = anne_ismi;
+            txt_annetelno.Text = anne_telefon_numarsi;
+            txt_annemeslek.Text = anne_mesleği;
+            txt_babaisim.Text = baba_ismi;
+            txt_babameslek.Text = baba_mesleği;
+            txt_babatelno.Text = baba_telefon_numarasi;
+            txt_hobiler.Text = hobileri;
+            txt_yüzde.Text = yüzdeliği;
+        }
+
+        private void InsertData_ogrenci(IFirebaseClient client)
+        {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
             int girilenNumara = Convert.ToInt32(txt_numara.Text);
             int girilenSınıf = Convert.ToInt32(txt_sınıf.Text);
-            char girilenSube=Convert.ToChar(txt_sube.Text);
+            char girilenSube = Convert.ToChar(txt_sube.Text);
             long girilenTelno = Convert.ToInt64(txt_telno.Text);
             long girilenAnnetelno = Convert.ToInt64(txt_annetelno.Text);
             long girilenBabatelno = Convert.ToInt64(txt_babatelno.Text);
@@ -134,11 +176,11 @@ namespace DataControlApp{
             bool girilenYatılılık = false;
 
 
-            if(txt_yatılılık.Text.ToLower()=="1")
+            if (txt_yatılılık.Text.ToLower() == "1")
             {
                 girilenYatılılık = true;
             }
-            else if(txt_yatılılık.Text.ToLower()=="0")
+            else if (txt_yatılılık.Text.ToLower() == "0")
             {
                 girilenYatılılık = false;
             }
@@ -152,29 +194,17 @@ namespace DataControlApp{
 
             // i++;
 
-           // Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
+            // Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
             Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text);
 
-            client.Set("StudentList/"+"Öğrenci"+girilenSirano , o2);
+            client.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             MessageBox.Show("data inserted successfully");
-           // client.Update("IndexCount/", Convert.ToInt32(i));
+            // client.Update("IndexCount/", Convert.ToInt32(i));
 
             temizle();
-
         }
-
-        private void btn_sil_Click(object sender, EventArgs e)
-        {
-            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
-
-
-            client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
-            client2.Delete("StudentList/" + "Öğrenci" + girilenSirano);
-
-        }
-
-        private void btn_güncelle_Click(object sender, EventArgs e)
+        private void UpdateData_ogrenci(IFirebaseClient client)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
             int girilenNumara = Convert.ToInt32(txt_numara.Text);
@@ -212,122 +242,17 @@ namespace DataControlApp{
 
         }
 
-        private void btn_ara_Click_1(object sender, EventArgs e)
+        private void DeleteData_ogrenci(IFirebaseClient client)
         {
-             // Kadir was here haha  
-            //sira no bazli öğrenci sorgulama
-            //yapim aşamasında ben kendim devam edicem  for döngüsünde tüm kişiler gözüküyo bunu listeye aktarmak kaldi birde sorgulama fonksiyonlarini yapmak (kadir)
-            if (txt_sirano.Text != ""){
-                FirebaseResponse result = client.Get(@"StudentList/Öğrenci"+txt_sirano.Text);
-                Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
-                string ismi = Convert.ToString(ogrenci_result.isim);
-                string soyismi = Convert.ToString(ogrenci_result.soyisim);
-                string numarasi = Convert.ToString(ogrenci_result.numara);
-                string sinifi = Convert.ToString(ogrenci_result.sınıf);
-                string şubesi = Convert.ToString(ogrenci_result.şube);
-                string yatililik_durumu = Convert.ToString(ogrenci_result.yatılılık);
-                string tc_numarasi = Convert.ToString(ogrenci_result.tcno);
-                string telefon_numarasi = Convert.ToString(ogrenci_result.telno);
-                string anne_ismi = Convert.ToString(ogrenci_result.anneisim);
-                string anne_telefon_numarsi = Convert.ToString(ogrenci_result.annetelno);
-                string anne_mesleği = Convert.ToString(ogrenci_result.annemeslek);
-                string baba_ismi = Convert.ToString(ogrenci_result.babaisim);
-                string baba_mesleği = Convert.ToString(ogrenci_result.babameslek);
-                string baba_telefon_numarasi = Convert.ToString(ogrenci_result.babatelno);
-                string hobileri = Convert.ToString(ogrenci_result.hobi);
-                string sira_nosu = Convert.ToString(ogrenci_result.sirano);
-                string yüzdeliği = Convert.ToString(ogrenci_result.girişyüzdesi);
-                txt_isim.Text = ismi;
-                txt_soyisim.Text = soyismi;
-                txt_sirano.Text = sira_nosu;
-                txt_numara.Text = numarasi;
-                txt_sınıf.Text = sinifi;
-                txt_sube.Text = şubesi;
-                txt_yatılılık.Text = yatililik_durumu;
-                txt_tcno.Text = tc_numarasi;
-                txt_telno.Text = telefon_numarasi;
-                txt_anneisim.Text = anne_ismi;
-                txt_annetelno.Text = anne_telefon_numarsi;
-                txt_annemeslek.Text = anne_mesleği;
-                txt_babaisim.Text = baba_ismi;
-                txt_babameslek.Text = baba_mesleği;
-                txt_babatelno.Text = baba_telefon_numarasi;
-                txt_hobiler.Text = hobileri;
-                txt_yüzde.Text = yüzdeliği;
-                // MessageBox.Show("İsmi : " + Convert.ToString(ogrenci_result.isim) + " " + " Soyismi : " + Convert.ToString(ogrenci_result.soyisim) + " Numarasi : " + Convert.ToString(ogrenci_result.numara), "Bilgilendirme");
-            }
-            else{
-                int sinif_var = 0;
-                int sube_var = 0;
-                int sira_var = 0;
-                for(sinif_var = 9; sinif_var < 13; sinif_var++)
-                {
-                    for (sube_var = 1; sube_var< 5; sube_var++)
-                    {
-                        for (sira_var = 1; sira_var < 100; sira_var++)
-                        {
-                            String siraString;
-                            if (sira_var < 10)
-                            {
-                                siraString = Convert.ToString(sinif_var) + Convert.ToString(sube_var) + "0" +Convert.ToString(sira_var);
-                            }
-                            else
-                            {
-                                siraString =Convert.ToString(sinif_var)+Convert.ToString(sube_var)+Convert.ToString(sira_var);
-                            }
+            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
 
 
-                            if (client.Get(@"StudentList/Öğrenci" +siraString).ResultAs<Ogrenci>() == null)
-                            {
-                                break;
-                                MessageBox.Show(siraString + " Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
-                            }
-                            else
-                            {
-                                var yanit = client.Get(@"StudentList/Öğrenci" + siraString);
-                                Ogrenci ogrenci_var = yanit.ResultAs<Ogrenci>();
-                                String ismi = ogrenci_var.isim;
-                                String soyismi = ogrenci_var.soyisim;
-                                int numarasi = ogrenci_var.numara;
-                                // MessageBox.Show("İsmi : " + Convert.ToString(ismi) + " " + "Soyismi : " + Convert.ToString(soyismi) + "Numarasi : " + Convert.ToString(numarasi), "Bilgilendirme");
-                                // MessageBox.Show(Convert.ToString(ogrenci_var.isim) + " " + Convert.ToString(ogrenci_var.soyisim), "Bilgilendirme");
-                                // MessageBox.Show(siraString, "Bilgilendirme");
-                                if (ogrenci_var == null)
-                                {
-                                    break;
-                                    MessageBox.Show(Convert.ToString(ogrenci_var.sirano) + " Belirtilen sayida öğrenci bulunamadi", "Bilgilendirme");
-                                }
-                            }
-                        }
-                    }
-                }
-              
-                    
-                    
-                    
-                
-}
-          
+            client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
+            client2.Delete("StudentList/" + "Öğrenci" + girilenSirano);
 
         }
 
-        public void temizle()
-        {
-            txt_isim.Text = string.Empty;
-            txt_soyisim.Text = string.Empty;
-          //  txt_sınıf.Text = string.Empty;
-          //  txt_sube.Text = string.Empty;
-            txt_numara.Text = string.Empty;
-            txt_yatılılık.Text = string.Empty;
-        }
-
-
-        private void btn_temizle_Click(object sender, EventArgs e)
-        {
-            temizle();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void InsertData_öğretmen(IFirebaseClient client)
         {
             int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
             int girilenÖğretmenDoğumTarihi = Convert.ToInt32(txt_ödoğumtarihi.Text);
@@ -339,30 +264,25 @@ namespace DataControlApp{
             MessageBox.Show("Data inserted successfully", "Bilgilendirme");
 
             temizle();
-
         }
-
-        private void btn_ösil_Click(object sender, EventArgs e)
-        {
-            int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
-
-            client.Delete("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano);
-
-
-        }
-
-        private void btn_ögüncelle_Click(object sender, EventArgs e)
+        private void UpdateData_öğretmen(IFirebaseClient client)
         {
             int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
             int girilenÖğretmenDoğumTarihi = Convert.ToInt32(txt_ödoğumtarihi.Text);
 
 
-            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text,girilenÖğretmenDoğumTarihi);
+            Öğretmen öğretmen = new Öğretmen(girilenÖğretmenSirano, txt_öisim.Text, txt_ösoyisim.Text, txt_ders.Text, girilenÖğretmenDoğumTarihi);
             client.Update("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano, öğretmen);
-
         }
 
-        private void btn_idareekle_Click(object sender, EventArgs e)
+        private void DeleteData_öğretmen(IFirebaseClient client)
+        {
+            int girilenÖğretmenSirano = Convert.ToInt32(txt_ösirano.Text);
+
+            client.Delete("TeacherList/" + "Öğretmen" + girilenÖğretmenSirano);
+        }
+
+        private void InsertData_idare(IFirebaseClient client)
         {
             int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
 
@@ -373,18 +293,8 @@ namespace DataControlApp{
             MessageBox.Show("Data inserted successfully;", "Bilgilendirme");
 
             temizle();
-
-
         }
-
-        private void btn_idaresil_Click(object sender, EventArgs e)
-        {
-            int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
-
-            client.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
-        }
-
-        private void btn_idaregünc_Click(object sender, EventArgs e)
+        private void UpdateData_idare(IFirebaseClient client)
         {
             int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
 
@@ -393,8 +303,24 @@ namespace DataControlApp{
             client.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
         }
 
-       
+        private void DeleteData_idare(IFirebaseClient client)
+        {
+            int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
 
+            client.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
+        }
+        private void fetchData(IFirebaseClient client){
+            int count = 0;
+            FirebaseResponse res = client.Get(@"StudentList");
+            Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
+            öğrenciler_list = new List<Ogrenci>(data.Values);
+            foreach (Ogrenci og in öğrenciler_list)
+            {
+                count++;
+                //    MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
+
+            }
+        }
         
     }
 }
