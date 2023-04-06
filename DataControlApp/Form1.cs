@@ -290,8 +290,9 @@ namespace DataControlApp{
         private void InsertData_idare(IFirebaseClient client)
         {
             int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
+            int girilenİdareDoğumTarihi = Convert.ToInt32(txt_idaredogtar.Text);
 
-            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text);
+            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text,girilenİdareDoğumTarihi);
 
             client.Set("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
 
@@ -302,10 +303,13 @@ namespace DataControlApp{
         private void UpdateData_idare(IFirebaseClient client)
         {
             int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
+            int girilenİdareDoğumTarihi = Convert.ToInt32(txt_idaredogtar.Text);
 
-            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text);
+            İdare idare = new İdare(girilenİdareSirano, txt_idareisim.Text, txt_idaresoyisim.Text, txt_görev.Text, girilenİdareDoğumTarihi);
 
             client.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
+            client2.Set("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
+            client2.Update("AdministrationList/" + "İdareci" + girilenİdareSirano, idare);
         }
 
         private void DeleteData_idare(IFirebaseClient client)
@@ -313,6 +317,7 @@ namespace DataControlApp{
             int girilenİdareSirano = Convert.ToInt32(txt_idaresirano.Text);
 
             client.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
+            client2.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
         }
         private void fetchData(IFirebaseClient client){
             int count = 0;

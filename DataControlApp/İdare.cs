@@ -12,18 +12,20 @@ namespace DataControlApp
         public string idareisim { get; set; }
         public string idaresoyisim { get; set; }
         public string görev { get; set; }
+        public int idaredoğumtar { get; set; }
 
         public İdare()
         {
 
         }
 
-        public İdare(int idaresirano, string idareisim, string idaresoyisim, string görev)
+        public İdare(int idaresirano, string idareisim, string idaresoyisim, string görev, int idaredoğumtar)
         {
             this.idaresirano = idaresirano;
             this.idareisim = idareisim;
             this.idaresoyisim = idaresoyisim;
             this.görev = görev;
+            this.idaredoğumtar = idaredoğumtar;
         }
     }
 }
