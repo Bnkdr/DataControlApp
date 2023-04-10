@@ -78,6 +78,9 @@ namespace DataControlApp{
              // Kadir was here haha  
             if (txt_sirano.Text != ""){
                 SearchOgrenciById(client, txt_sirano.Text);
+            }else if(txt_isim.Text !="" && txt_soyisim.Text != ""){
+
+                SearchOgrenciByNameAndSurname(client, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower());
             }
          }
           
@@ -165,6 +168,48 @@ namespace DataControlApp{
             txt_yüzde.Text = yüzdeliği;
         }
 
+        private void SearchOgrenciByNameAndSurname(IFirebaseClient client, String name, String surname)
+        {
+            fetchData(client);
+            foreach(Ogrenci o in öğrenciler_list){
+            if(name.ToLower().Equals(o.isim.ToLower()) && surname.ToLower().Equals(o.soyisim.ToLower())) {
+                    string ismi = Convert.ToString(o.isim);
+                    string soyismi = Convert.ToString(o.soyisim);
+                    string numarasi = Convert.ToString(o.numara);
+                    string sinifi = Convert.ToString(o.sınıf);
+                    string şubesi = Convert.ToString(o.şube);
+                    string yatililik_durumu = Convert.ToString(o.yatılılık);
+                    string tc_numarasi = Convert.ToString(o.tcno);
+                    string telefon_numarasi = Convert.ToString(o.telno);
+                    string anne_ismi = Convert.ToString(o.anneisim);
+                    string anne_telefon_numarsi = Convert.ToString(o.annetelno);
+                    string anne_mesleği = Convert.ToString(o.annemeslek);
+                    string baba_ismi = Convert.ToString(o.babaisim);
+                    string baba_mesleği = Convert.ToString(o.babameslek);
+                    string baba_telefon_numarasi = Convert.ToString(o.babatelno);
+                    string hobileri = Convert.ToString(o.hobi);
+                    string sira_nosu = Convert.ToString(o.sirano);
+                    string yüzdeliği = Convert.ToString(o.girişyüzdesi);
+                    txt_isim.Text = ismi;
+                    txt_soyisim.Text = soyismi;
+                    txt_sirano.Text = sira_nosu;
+                    txt_numara.Text = numarasi;
+                    txt_sınıf.Text = sinifi;
+                    txt_sube.Text = şubesi;
+                    txt_yatılılık.Text = yatililik_durumu;
+                    txt_tcno.Text = tc_numarasi;
+                    txt_telno.Text = telefon_numarasi;
+                    txt_anneisim.Text = anne_ismi;
+                    txt_annetelno.Text = anne_telefon_numarsi;
+                    txt_annemeslek.Text = anne_mesleği;
+                    txt_babaisim.Text = baba_ismi;
+                    txt_babameslek.Text = baba_mesleği;
+                    txt_babatelno.Text = baba_telefon_numarasi;
+                    txt_hobiler.Text = hobileri;
+                    txt_yüzde.Text = yüzdeliği;
+                }
+            }
+        }
         private void InsertData_ogrenci(IFirebaseClient client)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
@@ -206,9 +251,11 @@ namespace DataControlApp{
             fetchData(client);
             MessageBox.Show("data inserted successfully");
             // client.Update("IndexCount/", Convert.ToInt32(i));
-
+            fetchData(client);
             temizle();
         }
+
+
         private void UpdateData_ogrenci(IFirebaseClient client)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
