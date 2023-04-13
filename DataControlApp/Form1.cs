@@ -137,7 +137,14 @@ namespace DataControlApp{
             string numarasi = Convert.ToString(ogrenci_result.numara);
             string sinifi = Convert.ToString(ogrenci_result.sınıf);
             string şubesi = Convert.ToString(ogrenci_result.şube);
-            string yatililik_durumu = Convert.ToString(ogrenci_result.yatılılık);
+            if (ogrenci_result.yatılılık)
+            {
+                txt_yatılılık.Text = "1";
+            }
+            else
+            {
+                txt_yatılılık.Text = "0";
+            }
             string tc_numarasi = Convert.ToString(ogrenci_result.tcno);
             string telefon_numarasi = Convert.ToString(ogrenci_result.telno);
             string anne_ismi = Convert.ToString(ogrenci_result.anneisim);
@@ -149,13 +156,17 @@ namespace DataControlApp{
             string hobileri = Convert.ToString(ogrenci_result.hobi);
             string sira_nosu = Convert.ToString(ogrenci_result.sirano);
             string yüzdeliği = Convert.ToString(ogrenci_result.girişyüzdesi);
+            if (Convert.ToString(ogrenci_result.lgsPuan) != "")
+            {
+                string lgsPuani = Convert.ToString(ogrenci_result.lgsPuan);
+                txt_LgsPuanı.Text = lgsPuani;
+            }
             txt_isim.Text = ismi;
             txt_soyisim.Text = soyismi;
             txt_sirano.Text = sira_nosu;
             txt_numara.Text = numarasi;
             txt_sınıf.Text = sinifi;
             txt_sube.Text = şubesi;
-            txt_yatılılık.Text = yatililik_durumu;
             txt_tcno.Text = tc_numarasi;
             txt_telno.Text = telefon_numarasi;
             txt_anneisim.Text = anne_ismi;
@@ -166,6 +177,7 @@ namespace DataControlApp{
             txt_babatelno.Text = baba_telefon_numarasi;
             txt_hobiler.Text = hobileri;
             txt_yüzde.Text = yüzdeliği;
+           
         }
 
         private void SearchOgrenciByNameAndSurname(IFirebaseClient client, String name, String surname)
@@ -179,6 +191,11 @@ namespace DataControlApp{
                     string sinifi = Convert.ToString(o.sınıf);
                     string şubesi = Convert.ToString(o.şube);
                     string yatililik_durumu = Convert.ToString(o.yatılılık);
+                    if (o.yatılılık){ 
+                        txt_yatılılık.Text = "1";
+                    }else{
+                        txt_yatılılık.Text = "0";
+                    }
                     string tc_numarasi = Convert.ToString(o.tcno);
                     string telefon_numarasi = Convert.ToString(o.telno);
                     string anne_ismi = Convert.ToString(o.anneisim);
@@ -190,13 +207,16 @@ namespace DataControlApp{
                     string hobileri = Convert.ToString(o.hobi);
                     string sira_nosu = Convert.ToString(o.sirano);
                     string yüzdeliği = Convert.ToString(o.girişyüzdesi);
+                    if (Convert.ToString(o.lgsPuan) != ""){
+                        string lgsPuani = Convert.ToString(o.lgsPuan);
+                        txt_LgsPuanı.Text = lgsPuani;
+                    }
                     txt_isim.Text = ismi;
                     txt_soyisim.Text = soyismi;
                     txt_sirano.Text = sira_nosu;
                     txt_numara.Text = numarasi;
                     txt_sınıf.Text = sinifi;
                     txt_sube.Text = şubesi;
-                    txt_yatılılık.Text = yatililik_durumu;
                     txt_tcno.Text = tc_numarasi;
                     txt_telno.Text = telefon_numarasi;
                     txt_anneisim.Text = anne_ismi;
@@ -219,6 +239,7 @@ namespace DataControlApp{
             long girilenTelno = Convert.ToInt64(txt_telno.Text);
             long girilenAnnetelno = Convert.ToInt64(txt_annetelno.Text);
             long girilenBabatelno = Convert.ToInt64(txt_babatelno.Text);
+            float girilenLgsPuan = (float) Convert.ToDouble(txt_LgsPuanı.Text);
             double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
             long girilenNOno = Convert.ToInt64(txt_tcno.Text);
 
@@ -244,7 +265,7 @@ namespace DataControlApp{
             // i++;
 
             // Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan);
 
             client.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
@@ -265,6 +286,7 @@ namespace DataControlApp{
             long girilenTelno = Convert.ToInt64(txt_telno.Text);
             long girilenAnnetelno = Convert.ToInt64(txt_annetelno.Text);
             long girilenBabatelno = Convert.ToInt64(txt_babatelno.Text);
+            double girilenLgsPuan = Convert.ToDouble(txt_LgsPuanı.Text);
             double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
             long girilenNOno = Convert.ToInt64(txt_tcno.Text);
 
@@ -286,7 +308,7 @@ namespace DataControlApp{
 
 
 
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan);
             //Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
             client.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
             client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
@@ -379,6 +401,15 @@ namespace DataControlApp{
             }
             client.Set(@"IndexCount", count);
         }
-        
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

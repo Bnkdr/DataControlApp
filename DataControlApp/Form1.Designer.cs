@@ -85,6 +85,8 @@
             this.btn_öekle = new System.Windows.Forms.Button();
             this.btn_ösil = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txt_idaredogtar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txt_idareisim = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -97,8 +99,8 @@
             this.btn_idarara = new System.Windows.Forms.Button();
             this.btn_idareekle = new System.Windows.Forms.Button();
             this.btn_idaresil = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txt_idaredogtar = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txt_LgsPuanı = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -118,6 +120,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label28);
+            this.tabPage1.Controls.Add(this.txt_LgsPuanı);
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.txt_tcno);
             this.tabPage1.Controls.Add(this.label25);
@@ -706,6 +710,24 @@
             this.tabPage3.Text = "İdare";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(168, 187);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(70, 13);
+            this.label27.TabIndex = 51;
+            this.label27.Text = "Doğum Tarihi";
+            // 
+            // txt_idaredogtar
+            // 
+            this.txt_idaredogtar.Location = new System.Drawing.Point(301, 184);
+            this.txt_idaredogtar.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_idaredogtar.Name = "txt_idaredogtar";
+            this.txt_idaredogtar.Size = new System.Drawing.Size(201, 20);
+            this.txt_idaredogtar.TabIndex = 50;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -821,23 +843,25 @@
             this.btn_idaresil.UseVisualStyleBackColor = true;
             this.btn_idaresil.Click += new System.EventHandler(this.btn_idaresil_Click);
             // 
-            // label27
+            // label28
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(168, 187);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(70, 13);
-            this.label27.TabIndex = 51;
-            this.label27.Text = "Doğum Tarihi";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(29, 253);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(58, 13);
+            this.label28.TabIndex = 60;
+            this.label28.Text = "LGS Puanı";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
             // 
-            // txt_idaredogtar
+            // txt_LgsPuanı
             // 
-            this.txt_idaredogtar.Location = new System.Drawing.Point(301, 184);
-            this.txt_idaredogtar.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_idaredogtar.Name = "txt_idaredogtar";
-            this.txt_idaredogtar.Size = new System.Drawing.Size(201, 20);
-            this.txt_idaredogtar.TabIndex = 50;
+            this.txt_LgsPuanı.Location = new System.Drawing.Point(162, 250);
+            this.txt_LgsPuanı.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_LgsPuanı.Name = "txt_LgsPuanı";
+            this.txt_LgsPuanı.Size = new System.Drawing.Size(201, 20);
+            this.txt_LgsPuanı.TabIndex = 59;
+            this.txt_LgsPuanı.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
@@ -933,6 +957,8 @@
         private System.Windows.Forms.TextBox txt_tcno;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txt_idaredogtar;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txt_LgsPuanı;
     }
 }
 

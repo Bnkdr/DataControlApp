@@ -27,10 +27,13 @@ namespace DataControlApp
         public string hobi { get; set; }
         public double girişyüzdesi { get; set; }
         public long tcno { get; set; }
+        public double lgsPuan { get; set; }
 
         public Ogrenci()
         {
         }
+
+    
 
         public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık)
         {
@@ -62,7 +65,7 @@ namespace DataControlApp
             this.hobi = hobi;
             this.girişyüzdesi = girişyüzdesi;
         }*/
-        public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno,long babatelno, string hobi, double girişyüzdesi,long tcno,string babaisim,string babameslek)
+        public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno,long babatelno, string hobi, double girişyüzdesi,long tcno,string babaisim,string babameslek, double lgsPuan)
         {
             this.sirano = sirano;
             this.isim = isim;
@@ -81,6 +84,7 @@ namespace DataControlApp
             this.tcno=tcno;
             this.babaisim = babaisim;
             this.babameslek = babameslek;
+            this.lgsPuan = lgsPuan;
         }
 
 
