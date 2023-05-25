@@ -471,5 +471,103 @@ namespace DataControlApp{
         {
 
         }
+
+        private async void searchStudentByName(IFirebaseClient client)
+        {
+            fetchData(client);
+          
+            foreach (Ogrenci og in öğrenciler_list)
+            {
+                string girilenİsim = txt_isimleara.Text;
+                bool kontrol = false;
+
+                kontrol = og.isim.ToLower().Contains(girilenİsim.ToLower());
+
+               /* string isim = "";
+
+
+                kontrol = await IsItFirstNameAsync(girilenİsim);
+
+                if (kontrol)
+                {
+                    dataGridView1.Rows.Add(og.isim, og.soyisim, og.sınıf + "/" + og.şube, og.numara, og.yatılılık, og.telno, og.anneisim, og.babaisim, og.girişyüzdesi);
+                }
+
+                if(!kontrol)
+                    {
+                        isim = "";
+                        for (int a = girilenİsim.Length + 1; a < og.isim.Length; a++)
+                        {
+                            isim = isim + og.isim[a];
+
+                        if (girilenİsim.ToLower().Equals(isim))
+                        {
+                            kontrol = true;
+                        }
+                    }
+ 
+                    }*/
+
+                if (kontrol)
+                {
+                    dataGridView1.Rows.Add(og.isim, og.soyisim, og.sınıf + "/" + og.şube, og.numara, og.yatılılık, og.telno, og.anneisim, og.babaisim, og.girişyüzdesi);
+                }
+
+
+            }
+        
+
+        }
+
+       /* async Task<bool> IsItFirstNameAsync(string girilenisim)
+        {
+            bool kontrol = false;
+            foreach (Ogrenci og in öğrenciler_list)
+            {
+                string girilenİsim = txt_isimleara.Text;
+                string isim = "";
+
+                isim.con
+
+                for (int i = 0; i < girilenİsim.Length; i++)
+                {
+                    isim = isim + og.isim[i];
+
+                    if (girilenİsim.ToLower().Equals(isim))
+                    {
+                        kontrol = true;
+                    }
+                }
+            }
+                return kontrol;
+        }*/
+
+
+        private void searchStudentBySurname(IFirebaseClient client)
+        {
+            string girilenSoyisim = txt_soyisimleara.Text;
+
+            fetchData(client);
+            foreach(Ogrenci og in öğrenciler_list)
+            {
+                if(og.soyisim.ToLower().Equals(girilenSoyisim.ToLower()))
+                {
+                    dataGridView1.Rows.Add(og.isim, og.soyisim, og.sınıf + "/" + og.şube, og.numara, og.yatılılık, og.telno, og.anneisim, og.babaisim, og.girişyüzdesi);
+                }
+            }
+        }
+
+        private void btn_isimleara_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            searchStudentByName(client);
+        }
+
+        private void btn_soyisimleara_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            searchStudentBySurname(client);
+            
+        }
     }
 }

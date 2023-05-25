@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txt_LgsPuanı = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txt_tcno = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -99,12 +101,29 @@
             this.btn_idarara = new System.Windows.Forms.Button();
             this.btn_idareekle = new System.Windows.Forms.Button();
             this.btn_idaresil = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txt_LgsPuanı = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_soyisimleara = new System.Windows.Forms.Button();
+            this.btn_isimleara = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txt_isimleara = new System.Windows.Forms.TextBox();
+            this.txt_soyisimleara = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.c_isim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_soyisim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_sınıfsube = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_numara = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_yatılılık = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_telno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_anneisim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_babaisim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_girisyuzde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -112,10 +131,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(1, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(755, 515);
+            this.tabControl1.Size = new System.Drawing.Size(871, 515);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
@@ -164,10 +184,30 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(747, 489);
+            this.tabPage1.Size = new System.Drawing.Size(863, 489);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Öğrenci";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(29, 253);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(58, 13);
+            this.label28.TabIndex = 60;
+            this.label28.Text = "LGS Puanı";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
+            // 
+            // txt_LgsPuanı
+            // 
+            this.txt_LgsPuanı.Location = new System.Drawing.Point(162, 250);
+            this.txt_LgsPuanı.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_LgsPuanı.Name = "txt_LgsPuanı";
+            this.txt_LgsPuanı.Size = new System.Drawing.Size(201, 20);
+            this.txt_LgsPuanı.TabIndex = 59;
+            this.txt_LgsPuanı.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label26
             // 
@@ -548,7 +588,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(747, 489);
+            this.tabPage2.Size = new System.Drawing.Size(863, 489);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Öğretmen";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -705,7 +745,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(747, 489);
+            this.tabPage3.Size = new System.Drawing.Size(863, 489);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "İdare";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -843,31 +883,149 @@
             this.btn_idaresil.UseVisualStyleBackColor = true;
             this.btn_idaresil.Click += new System.EventHandler(this.btn_idaresil_Click);
             // 
-            // label28
+            // tabPage4
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(29, 253);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(58, 13);
-            this.label28.TabIndex = 60;
-            this.label28.Text = "LGS Puanı";
-            this.label28.Click += new System.EventHandler(this.label28_Click);
+            this.tabPage4.Controls.Add(this.btn_soyisimleara);
+            this.tabPage4.Controls.Add(this.btn_isimleara);
+            this.tabPage4.Controls.Add(this.label30);
+            this.tabPage4.Controls.Add(this.label29);
+            this.tabPage4.Controls.Add(this.txt_isimleara);
+            this.tabPage4.Controls.Add(this.txt_soyisimleara);
+            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(863, 489);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Tekli Arama";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // txt_LgsPuanı
+            // btn_soyisimleara
             // 
-            this.txt_LgsPuanı.Location = new System.Drawing.Point(162, 250);
-            this.txt_LgsPuanı.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_LgsPuanı.Name = "txt_LgsPuanı";
-            this.txt_LgsPuanı.Size = new System.Drawing.Size(201, 20);
-            this.txt_LgsPuanı.TabIndex = 59;
-            this.txt_LgsPuanı.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.btn_soyisimleara.Location = new System.Drawing.Point(479, 444);
+            this.btn_soyisimleara.Name = "btn_soyisimleara";
+            this.btn_soyisimleara.Size = new System.Drawing.Size(143, 21);
+            this.btn_soyisimleara.TabIndex = 6;
+            this.btn_soyisimleara.Text = "Soyisimle Ara";
+            this.btn_soyisimleara.UseVisualStyleBackColor = true;
+            this.btn_soyisimleara.Click += new System.EventHandler(this.btn_soyisimleara_Click);
+            // 
+            // btn_isimleara
+            // 
+            this.btn_isimleara.Location = new System.Drawing.Point(479, 407);
+            this.btn_isimleara.Name = "btn_isimleara";
+            this.btn_isimleara.Size = new System.Drawing.Size(143, 21);
+            this.btn_isimleara.TabIndex = 5;
+            this.btn_isimleara.Text = "İsimle Ara";
+            this.btn_isimleara.UseVisualStyleBackColor = true;
+            this.btn_isimleara.Click += new System.EventHandler(this.btn_isimleara_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(56, 448);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(42, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "Soyisim";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(56, 411);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(25, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "İsim";
+            // 
+            // txt_isimleara
+            // 
+            this.txt_isimleara.Location = new System.Drawing.Point(165, 408);
+            this.txt_isimleara.Name = "txt_isimleara";
+            this.txt_isimleara.Size = new System.Drawing.Size(226, 20);
+            this.txt_isimleara.TabIndex = 2;
+            // 
+            // txt_soyisimleara
+            // 
+            this.txt_soyisimleara.Location = new System.Drawing.Point(165, 445);
+            this.txt_soyisimleara.Name = "txt_soyisimleara";
+            this.txt_soyisimleara.Size = new System.Drawing.Size(226, 20);
+            this.txt_soyisimleara.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.c_isim,
+            this.c_soyisim,
+            this.c_sınıfsube,
+            this.c_numara,
+            this.c_yatılılık,
+            this.c_telno,
+            this.c_anneisim,
+            this.c_babaisim,
+            this.c_girisyuzde});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(860, 363);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // c_isim
+            // 
+            this.c_isim.HeaderText = "İsim";
+            this.c_isim.Name = "c_isim";
+            this.c_isim.Width = 120;
+            // 
+            // c_soyisim
+            // 
+            this.c_soyisim.HeaderText = "Soyisim";
+            this.c_soyisim.Name = "c_soyisim";
+            this.c_soyisim.Width = 120;
+            // 
+            // c_sınıfsube
+            // 
+            this.c_sınıfsube.HeaderText = "Sınıf/Şube";
+            this.c_sınıfsube.Name = "c_sınıfsube";
+            // 
+            // c_numara
+            // 
+            this.c_numara.HeaderText = "Okul No";
+            this.c_numara.Name = "c_numara";
+            this.c_numara.Width = 60;
+            // 
+            // c_yatılılık
+            // 
+            this.c_yatılılık.HeaderText = "Yatılılık";
+            this.c_yatılılık.Name = "c_yatılılık";
+            this.c_yatılılık.Width = 50;
+            // 
+            // c_telno
+            // 
+            this.c_telno.HeaderText = "Telefon No";
+            this.c_telno.Name = "c_telno";
+            this.c_telno.Width = 120;
+            // 
+            // c_anneisim
+            // 
+            this.c_anneisim.HeaderText = "Anne İsim";
+            this.c_anneisim.Name = "c_anneisim";
+            // 
+            // c_babaisim
+            // 
+            this.c_babaisim.HeaderText = "Baba İsim";
+            this.c_babaisim.Name = "c_babaisim";
+            // 
+            // c_girisyuzde
+            // 
+            this.c_girisyuzde.HeaderText = "Giriş Yüzdesi";
+            this.c_girisyuzde.Name = "c_girisyuzde";
+            this.c_girisyuzde.Width = 60;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 459);
+            this.ClientSize = new System.Drawing.Size(870, 515);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -880,6 +1038,9 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -959,6 +1120,23 @@
         private System.Windows.Forms.TextBox txt_idaredogtar;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txt_LgsPuanı;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox txt_isimleara;
+        private System.Windows.Forms.TextBox txt_soyisimleara;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_soyisimleara;
+        private System.Windows.Forms.Button btn_isimleara;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_isim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_soyisim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_sınıfsube;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_numara;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_yatılılık;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_telno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_anneisim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_babaisim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_girisyuzde;
     }
 }
 
