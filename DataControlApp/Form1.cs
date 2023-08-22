@@ -361,6 +361,7 @@ namespace DataControlApp{
             {
                 yerlesme = txt_yerlestigiYer.Text;
                 siralama = txt_siralama.Text;
+                mezun = true;
             }
 
 
