@@ -118,6 +118,19 @@
             this.c_anneisim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c_babaisim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c_girisyuzde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txt_oBeklenti = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txt_dogumGunu = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txt_cinsiyet = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txt_yanlisSoru = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txt_bosSoru = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txt_burs = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -135,11 +148,24 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(871, 515);
+            this.tabControl1.Size = new System.Drawing.Size(1123, 515);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.label31);
+            this.tabPage1.Controls.Add(this.txt_oBeklenti);
+            this.tabPage1.Controls.Add(this.label32);
+            this.tabPage1.Controls.Add(this.txt_dogumGunu);
+            this.tabPage1.Controls.Add(this.label33);
+            this.tabPage1.Controls.Add(this.txt_cinsiyet);
+            this.tabPage1.Controls.Add(this.label34);
+            this.tabPage1.Controls.Add(this.txt_yanlisSoru);
+            this.tabPage1.Controls.Add(this.label35);
+            this.tabPage1.Controls.Add(this.txt_bosSoru);
+            this.tabPage1.Controls.Add(this.label36);
+            this.tabPage1.Controls.Add(this.txt_burs);
             this.tabPage1.Controls.Add(this.label28);
             this.tabPage1.Controls.Add(this.txt_LgsPuanı);
             this.tabPage1.Controls.Add(this.label26);
@@ -184,7 +210,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(863, 489);
+            this.tabPage1.Size = new System.Drawing.Size(1115, 489);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Öğrenci";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -391,7 +417,7 @@
             // 
             // btn_temizle
             // 
-            this.btn_temizle.Location = new System.Drawing.Point(155, 303);
+            this.btn_temizle.Location = new System.Drawing.Point(788, 246);
             this.btn_temizle.Name = "btn_temizle";
             this.btn_temizle.Size = new System.Drawing.Size(86, 53);
             this.btn_temizle.TabIndex = 38;
@@ -527,7 +553,7 @@
             // 
             // btn_güncelle
             // 
-            this.btn_güncelle.Location = new System.Drawing.Point(296, 353);
+            this.btn_güncelle.Location = new System.Drawing.Point(733, 146);
             this.btn_güncelle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_güncelle.Name = "btn_güncelle";
             this.btn_güncelle.Size = new System.Drawing.Size(200, 33);
@@ -538,7 +564,7 @@
             // 
             // btn_ara
             // 
-            this.btn_ara.Location = new System.Drawing.Point(296, 390);
+            this.btn_ara.Location = new System.Drawing.Point(733, 183);
             this.btn_ara.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ara.Name = "btn_ara";
             this.btn_ara.Size = new System.Drawing.Size(200, 33);
@@ -549,7 +575,7 @@
             // 
             // btn_ekle
             // 
-            this.btn_ekle.Location = new System.Drawing.Point(296, 279);
+            this.btn_ekle.Location = new System.Drawing.Point(733, 72);
             this.btn_ekle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ekle.Name = "btn_ekle";
             this.btn_ekle.Size = new System.Drawing.Size(200, 33);
@@ -560,7 +586,7 @@
             // 
             // btn_sil
             // 
-            this.btn_sil.Location = new System.Drawing.Point(296, 316);
+            this.btn_sil.Location = new System.Drawing.Point(733, 109);
             this.btn_sil.Margin = new System.Windows.Forms.Padding(2);
             this.btn_sil.Name = "btn_sil";
             this.btn_sil.Size = new System.Drawing.Size(200, 33);
@@ -588,7 +614,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(863, 489);
+            this.tabPage2.Size = new System.Drawing.Size(1115, 489);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Öğretmen";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -745,7 +771,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(863, 489);
+            this.tabPage3.Size = new System.Drawing.Size(1115, 489);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "İdare";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -895,7 +921,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(863, 489);
+            this.tabPage4.Size = new System.Drawing.Size(1115, 489);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tekli Arama";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -967,7 +993,7 @@
             this.c_girisyuzde});
             this.dataGridView1.Location = new System.Drawing.Point(0, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(860, 363);
+            this.dataGridView1.Size = new System.Drawing.Size(874, 363);
             this.dataGridView1.TabIndex = 0;
             // 
             // c_isim
@@ -1021,11 +1047,130 @@
             this.c_girisyuzde.Name = "c_girisyuzde";
             this.c_girisyuzde.Width = 60;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(378, 315);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(99, 13);
+            this.label31.TabIndex = 72;
+            this.label31.Text = "Okuldan Beklentiler";
+            // 
+            // txt_oBeklenti
+            // 
+            this.txt_oBeklenti.Location = new System.Drawing.Point(511, 313);
+            this.txt_oBeklenti.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_oBeklenti.Name = "txt_oBeklenti";
+            this.txt_oBeklenti.Size = new System.Drawing.Size(201, 20);
+            this.txt_oBeklenti.TabIndex = 71;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(29, 349);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(70, 13);
+            this.label32.TabIndex = 70;
+            this.label32.Text = "Doğum Günü";
+            // 
+            // txt_dogumGunu
+            // 
+            this.txt_dogumGunu.Location = new System.Drawing.Point(162, 346);
+            this.txt_dogumGunu.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_dogumGunu.Name = "txt_dogumGunu";
+            this.txt_dogumGunu.Size = new System.Drawing.Size(201, 20);
+            this.txt_dogumGunu.TabIndex = 69;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(378, 348);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(43, 13);
+            this.label33.TabIndex = 68;
+            this.label33.Text = "Cinsiyet";
+            // 
+            // txt_cinsiyet
+            // 
+            this.txt_cinsiyet.Location = new System.Drawing.Point(511, 346);
+            this.txt_cinsiyet.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_cinsiyet.Name = "txt_cinsiyet";
+            this.txt_cinsiyet.Size = new System.Drawing.Size(201, 20);
+            this.txt_cinsiyet.TabIndex = 67;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(29, 286);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(90, 13);
+            this.label34.TabIndex = 66;
+            this.label34.Text = "Yanlış Soru Sayısı";
+            // 
+            // txt_yanlisSoru
+            // 
+            this.txt_yanlisSoru.Location = new System.Drawing.Point(162, 284);
+            this.txt_yanlisSoru.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_yanlisSoru.Name = "txt_yanlisSoru";
+            this.txt_yanlisSoru.Size = new System.Drawing.Size(201, 20);
+            this.txt_yanlisSoru.TabIndex = 65;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(29, 315);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(80, 13);
+            this.label35.TabIndex = 64;
+            this.label35.Text = "Boş Soru Sayısı";
+            // 
+            // txt_bosSoru
+            // 
+            this.txt_bosSoru.Location = new System.Drawing.Point(162, 313);
+            this.txt_bosSoru.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_bosSoru.Name = "txt_bosSoru";
+            this.txt_bosSoru.Size = new System.Drawing.Size(201, 20);
+            this.txt_bosSoru.TabIndex = 63;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(378, 286);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(57, 13);
+            this.label36.TabIndex = 62;
+            this.label36.Text = "Burs Bilgisi";
+            // 
+            // txt_burs
+            // 
+            this.txt_burs.Location = new System.Drawing.Point(511, 284);
+            this.txt_burs.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_burs.Name = "txt_burs";
+            this.txt_burs.Size = new System.Drawing.Size(201, 20);
+            this.txt_burs.TabIndex = 61;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "2022-2023",
+            "2023-2024"});
+            this.comboBox1.Location = new System.Drawing.Point(733, 22);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(196, 21);
+            this.comboBox1.TabIndex = 73;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 515);
+            this.ClientSize = new System.Drawing.Size(957, 505);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -1137,6 +1282,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c_anneisim;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_babaisim;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_girisyuzde;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txt_oBeklenti;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txt_dogumGunu;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txt_cinsiyet;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txt_yanlisSoru;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txt_bosSoru;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txt_burs;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

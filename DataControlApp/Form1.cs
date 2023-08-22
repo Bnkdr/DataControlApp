@@ -93,10 +93,27 @@ namespace DataControlApp{
         {
             txt_isim.Text = string.Empty;
             txt_soyisim.Text = string.Empty;
-          //  txt_sınıf.Text = string.Empty;
-          //  txt_sube.Text = string.Empty;
+            txt_sınıf.Text = string.Empty;
+            txt_sube.Text = string.Empty;
             txt_numara.Text = string.Empty;
             txt_yatılılık.Text = string.Empty;
+            txt_anneisim.Text = string.Empty;
+            txt_annemeslek.Text = string.Empty;
+            txt_annetelno.Text = string.Empty;
+            txt_babaisim.Text = string.Empty;
+            txt_babameslek.Text = string.Empty;
+            txt_babatelno.Text = string.Empty;
+            txt_bosSoru.Text = string.Empty;
+            txt_burs.Text = string.Empty;
+            txt_cinsiyet.Text = string.Empty;
+            txt_hobiler.Text = string.Empty;
+            txt_dogumGunu.Text = string.Empty;
+            txt_LgsPuanı.Text = string.Empty;
+            txt_oBeklenti.Text = string.Empty;
+            txt_tcno.Text = string.Empty;
+            txt_telno.Text = string.Empty;
+            txt_yanlisSoru.Text = string.Empty;
+            txt_yüzde.Text = string.Empty;
         }
 
 
@@ -483,30 +500,7 @@ namespace DataControlApp{
 
                 kontrol = og.isim.ToLower().Contains(girilenİsim.ToLower());
 
-               /* string isim = "";
-
-
-                kontrol = await IsItFirstNameAsync(girilenİsim);
-
-                if (kontrol)
-                {
-                    dataGridView1.Rows.Add(og.isim, og.soyisim, og.sınıf + "/" + og.şube, og.numara, og.yatılılık, og.telno, og.anneisim, og.babaisim, og.girişyüzdesi);
-                }
-
-                if(!kontrol)
-                    {
-                        isim = "";
-                        for (int a = girilenİsim.Length + 1; a < og.isim.Length; a++)
-                        {
-                            isim = isim + og.isim[a];
-
-                        if (girilenİsim.ToLower().Equals(isim))
-                        {
-                            kontrol = true;
-                        }
-                    }
- 
-                    }*/
+             
 
                 if (kontrol)
                 {
@@ -519,28 +513,7 @@ namespace DataControlApp{
 
         }
 
-       /* async Task<bool> IsItFirstNameAsync(string girilenisim)
-        {
-            bool kontrol = false;
-            foreach (Ogrenci og in öğrenciler_list)
-            {
-                string girilenİsim = txt_isimleara.Text;
-                string isim = "";
-
-                isim.con
-
-                for (int i = 0; i < girilenİsim.Length; i++)
-                {
-                    isim = isim + og.isim[i];
-
-                    if (girilenİsim.ToLower().Equals(isim))
-                    {
-                        kontrol = true;
-                    }
-                }
-            }
-                return kontrol;
-        }*/
+      
 
 
         private void searchStudentBySurname(IFirebaseClient client)
