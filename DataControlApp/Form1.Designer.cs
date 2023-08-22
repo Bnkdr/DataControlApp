@@ -130,12 +130,14 @@
             this.txt_bosSoru = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.txt_burs = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_dir = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.txt_memleket = new System.Windows.Forms.TextBox();
-            this.rd_btn_mezun = new System.Windows.Forms.RadioButton();
             this.lbl_yerlestigiYer = new System.Windows.Forms.Label();
             this.txt_yerlestigiYer = new System.Windows.Forms.TextBox();
+            this.lbl_siralama = new System.Windows.Forms.Label();
+            this.txt_siralama = new System.Windows.Forms.TextBox();
+            this.checkBox_mezun = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -158,12 +160,14 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBox_mezun);
+            this.tabPage1.Controls.Add(this.lbl_siralama);
+            this.tabPage1.Controls.Add(this.txt_siralama);
             this.tabPage1.Controls.Add(this.lbl_yerlestigiYer);
             this.tabPage1.Controls.Add(this.txt_yerlestigiYer);
-            this.tabPage1.Controls.Add(this.rd_btn_mezun);
             this.tabPage1.Controls.Add(this.label37);
             this.tabPage1.Controls.Add(this.txt_memleket);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.comboBox_dir);
             this.tabPage1.Controls.Add(this.label31);
             this.tabPage1.Controls.Add(this.txt_oBeklenti);
             this.tabPage1.Controls.Add(this.label32);
@@ -1165,16 +1169,16 @@
             this.txt_burs.Size = new System.Drawing.Size(201, 20);
             this.txt_burs.TabIndex = 61;
             // 
-            // comboBox1
+            // comboBox_dir
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_dir.FormattingEnabled = true;
+            this.comboBox_dir.Items.AddRange(new object[] {
             "2022-2023",
             "2023-2024"});
-            this.comboBox1.Location = new System.Drawing.Point(733, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(196, 21);
-            this.comboBox1.TabIndex = 73;
+            this.comboBox_dir.Location = new System.Drawing.Point(733, 22);
+            this.comboBox_dir.Name = "comboBox_dir";
+            this.comboBox_dir.Size = new System.Drawing.Size(196, 21);
+            this.comboBox_dir.TabIndex = 73;
             // 
             // label37
             // 
@@ -1193,18 +1197,6 @@
             this.txt_memleket.Name = "txt_memleket";
             this.txt_memleket.Size = new System.Drawing.Size(201, 20);
             this.txt_memleket.TabIndex = 74;
-            // 
-            // rd_btn_mezun
-            // 
-            this.rd_btn_mezun.AutoSize = true;
-            this.rd_btn_mezun.Location = new System.Drawing.Point(378, 378);
-            this.rd_btn_mezun.Name = "rd_btn_mezun";
-            this.rd_btn_mezun.Size = new System.Drawing.Size(57, 17);
-            this.rd_btn_mezun.TabIndex = 76;
-            this.rd_btn_mezun.TabStop = true;
-            this.rd_btn_mezun.Text = "Mezun";
-            this.rd_btn_mezun.UseVisualStyleBackColor = true;
-            this.rd_btn_mezun.CheckedChanged += new System.EventHandler(this.rd_btn_mezun_CheckedChanged);
             // 
             // lbl_yerlestigiYer
             // 
@@ -1225,6 +1217,37 @@
             this.txt_yerlestigiYer.Size = new System.Drawing.Size(201, 20);
             this.txt_yerlestigiYer.TabIndex = 77;
             this.txt_yerlestigiYer.Visible = false;
+            // 
+            // lbl_siralama
+            // 
+            this.lbl_siralama.AutoSize = true;
+            this.lbl_siralama.Location = new System.Drawing.Point(378, 446);
+            this.lbl_siralama.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_siralama.Name = "lbl_siralama";
+            this.lbl_siralama.Size = new System.Drawing.Size(47, 13);
+            this.lbl_siralama.TabIndex = 80;
+            this.lbl_siralama.Text = "Sıralama";
+            this.lbl_siralama.Visible = false;
+            // 
+            // txt_siralama
+            // 
+            this.txt_siralama.Location = new System.Drawing.Point(511, 444);
+            this.txt_siralama.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_siralama.Name = "txt_siralama";
+            this.txt_siralama.Size = new System.Drawing.Size(201, 20);
+            this.txt_siralama.TabIndex = 79;
+            this.txt_siralama.Visible = false;
+            // 
+            // checkBox_mezun
+            // 
+            this.checkBox_mezun.AutoSize = true;
+            this.checkBox_mezun.Location = new System.Drawing.Point(381, 378);
+            this.checkBox_mezun.Name = "checkBox_mezun";
+            this.checkBox_mezun.Size = new System.Drawing.Size(58, 17);
+            this.checkBox_mezun.TabIndex = 81;
+            this.checkBox_mezun.Text = "Mezun";
+            this.checkBox_mezun.UseVisualStyleBackColor = true;
+            this.checkBox_mezun.CheckedChanged += new System.EventHandler(this.checkBox_mezun_CheckedChanged);
             // 
             // Form1
             // 
@@ -1354,12 +1377,14 @@
         private System.Windows.Forms.TextBox txt_bosSoru;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox txt_burs;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_dir;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txt_memleket;
         private System.Windows.Forms.Label lbl_yerlestigiYer;
         private System.Windows.Forms.TextBox txt_yerlestigiYer;
-        private System.Windows.Forms.RadioButton rd_btn_mezun;
+        private System.Windows.Forms.Label lbl_siralama;
+        private System.Windows.Forms.TextBox txt_siralama;
+        private System.Windows.Forms.CheckBox checkBox_mezun;
     }
 }
 

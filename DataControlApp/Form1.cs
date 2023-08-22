@@ -114,7 +114,9 @@ namespace DataControlApp{
             txt_telno.Text = string.Empty;
             txt_yanlisSoru.Text = string.Empty;
             txt_yüzde.Text = string.Empty;
-            txt_memleket = string.Empty;
+            txt_memleket.Text = string.Empty;
+            txt_yerlestigiYer.Text = string.Empty;
+            txt_siralama.Text = string.Empty;
         }
 
 
@@ -307,6 +309,27 @@ namespace DataControlApp{
             }
         }
 
+        private bool boolTostring(string variable,bool result)
+        {
+            if (variable.ToLower() == "1")
+            {
+                result = true;
+                return result;
+            }
+            else if (variable.ToLower() == "0")
+            {
+                result = false;
+                return result;
+            }
+            else
+            {
+                MessageBox.Show($"Hatalı {variable} Bilgisi", "Hata");
+                return result;
+            }
+           
+        }
+        bool mezun = false;
+        bool siralama_bool = false;
         private void InsertData_ogrenci(IFirebaseClient client)
         {
             int girilenSirano = Convert.ToInt32(txt_sirano.Text);
@@ -319,38 +342,41 @@ namespace DataControlApp{
             float girilenLgsPuan = (float) Convert.ToDouble(txt_LgsPuanı.Text);
             double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
             long girilenNOno = Convert.ToInt64(txt_tcno.Text);
+            int yanlisSoru = Convert.ToInt32(txt_yanlisSoru.Text);
+            int bosSoru = Convert.ToInt32(txt_bosSoru.Text);
+
 
             bool girilenYatılılık = false;
+            boolTostring(txt_yatılılık.Text, girilenYatılılık);
+            bool burs = false;
+            boolTostring(txt_burs.Text, burs);
+            bool cinsiyet = false;
+            boolTostring(txt_cinsiyet.Text,cinsiyet);
 
 
-            if (txt_yatılılık.Text.ToLower() == "1")
+            string yerlesme = "Not graduated";
+            string siralama = "Not graduated";
+
+            if (checkBox_mezun.Checked == true)
             {
-                girilenYatılılık = true;
+                yerlesme = txt_yerlestigiYer.Text;
+                siralama = txt_siralama.Text;
             }
-            else if (txt_yatılılık.Text.ToLower() == "0")
+
+
+            string directory = comboBox_dir.SelectedItem.ToString();
+            if(mezun!=true)
             {
-                girilenYatılılık = false;
-            }
-            else
-            {
-                MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
+                yerlesme = "Not graduated";
+                siralama = "Not graduated";
             }
 
-            //var result = client.Get("IndexCount");
-            //int i = result.ResultAs<int>();
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text, txt_dogumGunu.Text,cinsiyet, txt_memleket.Text,yerlesme,siralama);
 
-            // i++;
-
-            // Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan);
-
-            client.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
-            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
-            fetchData(client);
+            client.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
+            client2.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
+            
             MessageBox.Show("data inserted successfully");
-            // client.Update("IndexCount/", Convert.ToInt32(i));
-            fetchData(client);
-            temizle();
         }
 
 
@@ -546,8 +572,29 @@ namespace DataControlApp{
 
         private void rd_btn_mezun_CheckedChanged(object sender, EventArgs e)
         {
+            
             txt_yerlestigiYer.Visible = true;
             lbl_yerlestigiYer.Visible = true;
+            txt_siralama.Visible = true;
+            lbl_siralama.Visible = true;
+        }
+
+        private void checkBox_mezun_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_mezun.Checked == true)
+            {
+                txt_yerlestigiYer.Visible = true;
+                lbl_yerlestigiYer.Visible = true;
+                txt_siralama.Visible = true;
+                lbl_siralama.Visible = true;
+            }
+            else
+            {
+                txt_yerlestigiYer.Visible = false;
+                lbl_yerlestigiYer.Visible = false;
+                txt_siralama.Visible = false;
+                lbl_siralama.Visible = false;
+            }
         }
     }
 }

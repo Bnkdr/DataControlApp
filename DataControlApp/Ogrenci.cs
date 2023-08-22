@@ -36,6 +36,7 @@ namespace DataControlApp
         public bool cinsiyet { get; set; }
         public string memleket { get; set; }
         public string yerlestigiYer { get; set; }
+        public string siralama { get; set; }
 
         public Ogrenci()
         {
@@ -64,7 +65,7 @@ namespace DataControlApp
             this.lgsPuan = lgsPuan;
         }
 
-        public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno, long babatelno, string hobi, double girişyüzdesi, long tcno, string babaisim, string babameslek, double lgsPuan,int yanlisSoru,bool burs, int bosSoru, string oBeklenti, string dogumGunu, bool cinsiyet, string memleket,string yerlestigiYer)
+        public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno, long babatelno, string hobi, double girişyüzdesi, long tcno, string babaisim, string babameslek, double lgsPuan,int yanlisSoru,bool burs, int bosSoru, string oBeklenti, string dogumGunu, bool cinsiyet, string memleket,string yerlestigiYer,string siralama)
         {
             this.sirano = sirano;
             this.isim = isim;
@@ -92,6 +93,7 @@ namespace DataControlApp
             this.cinsiyet = cinsiyet;
             this.memleket = memleket;
             this.yerlestigiYer = yerlestigiYer;
+            this.siralama = siralama;
         }
 
 
