@@ -347,9 +347,9 @@ namespace DataControlApp{
 
 
             bool girilenYatılılık = false;
-            boolTostring(txt_yatılılık.Text, girilenYatılılık);
+            girilenYatılılık =boolTostring(txt_yatılılık.Text, girilenYatılılık);
             bool burs = false;
-            boolTostring(txt_burs.Text, burs);
+            burs=boolTostring(txt_burs.Text, burs);
 
 
 
