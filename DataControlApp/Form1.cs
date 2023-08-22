@@ -114,6 +114,7 @@ namespace DataControlApp{
             txt_telno.Text = string.Empty;
             txt_yanlisSoru.Text = string.Empty;
             txt_yüzde.Text = string.Empty;
+            txt_memleket = string.Empty;
         }
 
 
@@ -541,6 +542,12 @@ namespace DataControlApp{
             dataGridView1.Rows.Clear();
             searchStudentBySurname(client);
             
+        }
+
+        private void rd_btn_mezun_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_yerlestigiYer.Visible = true;
+            lbl_yerlestigiYer.Visible = true;
         }
     }
 }

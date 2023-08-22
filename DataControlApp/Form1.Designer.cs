@@ -131,6 +131,11 @@
             this.label36 = new System.Windows.Forms.Label();
             this.txt_burs = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txt_memleket = new System.Windows.Forms.TextBox();
+            this.rd_btn_mezun = new System.Windows.Forms.RadioButton();
+            this.lbl_yerlestigiYer = new System.Windows.Forms.Label();
+            this.txt_yerlestigiYer = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -153,6 +158,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lbl_yerlestigiYer);
+            this.tabPage1.Controls.Add(this.txt_yerlestigiYer);
+            this.tabPage1.Controls.Add(this.rd_btn_mezun);
+            this.tabPage1.Controls.Add(this.label37);
+            this.tabPage1.Controls.Add(this.txt_memleket);
             this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.label31);
             this.tabPage1.Controls.Add(this.txt_oBeklenti);
@@ -1166,6 +1176,56 @@
             this.comboBox1.Size = new System.Drawing.Size(196, 21);
             this.comboBox1.TabIndex = 73;
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(29, 378);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(53, 13);
+            this.label37.TabIndex = 75;
+            this.label37.Text = "Memleket";
+            // 
+            // txt_memleket
+            // 
+            this.txt_memleket.Location = new System.Drawing.Point(162, 375);
+            this.txt_memleket.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_memleket.Name = "txt_memleket";
+            this.txt_memleket.Size = new System.Drawing.Size(201, 20);
+            this.txt_memleket.TabIndex = 74;
+            // 
+            // rd_btn_mezun
+            // 
+            this.rd_btn_mezun.AutoSize = true;
+            this.rd_btn_mezun.Location = new System.Drawing.Point(378, 378);
+            this.rd_btn_mezun.Name = "rd_btn_mezun";
+            this.rd_btn_mezun.Size = new System.Drawing.Size(57, 17);
+            this.rd_btn_mezun.TabIndex = 76;
+            this.rd_btn_mezun.TabStop = true;
+            this.rd_btn_mezun.Text = "Mezun";
+            this.rd_btn_mezun.UseVisualStyleBackColor = true;
+            this.rd_btn_mezun.CheckedChanged += new System.EventHandler(this.rd_btn_mezun_CheckedChanged);
+            // 
+            // lbl_yerlestigiYer
+            // 
+            this.lbl_yerlestigiYer.AutoSize = true;
+            this.lbl_yerlestigiYer.Location = new System.Drawing.Point(378, 416);
+            this.lbl_yerlestigiYer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_yerlestigiYer.Name = "lbl_yerlestigiYer";
+            this.lbl_yerlestigiYer.Size = new System.Drawing.Size(68, 13);
+            this.lbl_yerlestigiYer.TabIndex = 78;
+            this.lbl_yerlestigiYer.Text = "Yerleştiği Yer";
+            this.lbl_yerlestigiYer.Visible = false;
+            // 
+            // txt_yerlestigiYer
+            // 
+            this.txt_yerlestigiYer.Location = new System.Drawing.Point(511, 414);
+            this.txt_yerlestigiYer.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_yerlestigiYer.Name = "txt_yerlestigiYer";
+            this.txt_yerlestigiYer.Size = new System.Drawing.Size(201, 20);
+            this.txt_yerlestigiYer.TabIndex = 77;
+            this.txt_yerlestigiYer.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1295,6 +1355,11 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox txt_burs;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txt_memleket;
+        private System.Windows.Forms.Label lbl_yerlestigiYer;
+        private System.Windows.Forms.TextBox txt_yerlestigiYer;
+        private System.Windows.Forms.RadioButton rd_btn_mezun;
     }
 }
 
