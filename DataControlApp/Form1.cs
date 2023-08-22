@@ -358,7 +358,7 @@ namespace DataControlApp{
 
             if (checkBox_mezun.Checked == true)
             {
-                yerlesme = txt_yerlestigiYer.Text;
+                yerlesme = txt_yerlestigiYer.Text.ToLower();
                 siralama = txt_siralama.Text;
                 mezun = true;
             }
@@ -371,7 +371,7 @@ namespace DataControlApp{
                 siralama = "Not graduated";
             }
 
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text, txt_dogumGunu.Text,txt_cinsiyet.Text, txt_memleket.Text,yerlesme,siralama);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(),txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(),yerlesme,siralama);
 
             client.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
             client2.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
