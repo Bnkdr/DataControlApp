@@ -350,8 +350,7 @@ namespace DataControlApp{
             boolTostring(txt_yatılılık.Text, girilenYatılılık);
             bool burs = false;
             boolTostring(txt_burs.Text, burs);
-            bool cinsiyet = false;
-            boolTostring(txt_cinsiyet.Text,cinsiyet);
+
 
 
             string yerlesme = "Not graduated";
@@ -372,7 +371,7 @@ namespace DataControlApp{
                 siralama = "Not graduated";
             }
 
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text, txt_dogumGunu.Text,cinsiyet, txt_memleket.Text,yerlesme,siralama);
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text, txt_dogumGunu.Text,txt_cinsiyet.Text, txt_memleket.Text,yerlesme,siralama);
 
             client.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
             client2.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
