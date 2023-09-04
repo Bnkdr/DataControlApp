@@ -373,8 +373,8 @@ namespace DataControlApp{
 
             Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(),txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(),yerlesme,siralama);
 
-            client.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
-            client2.Set($"StudentList/{directory}/" + "Öğrenci" + girilenSirano, o2);
+            client.Set($"StudentList/{directory}/" + "Öğrenci" +txt_sirano.Text, o2);
+            client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
             
             MessageBox.Show("data inserted successfully");
         }
