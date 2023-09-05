@@ -435,8 +435,8 @@ namespace DataControlApp{
         {
             string directory = comboBox_dir.SelectedItem.ToString();
 
-            client.Delete($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text);
-            client2.Delete($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text);
+            client.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
+            client2.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
             fetchData(client);
         }
 
