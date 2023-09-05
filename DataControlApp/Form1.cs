@@ -503,6 +503,10 @@ namespace DataControlApp{
         }
         private void fetchData(IFirebaseClient client){
             int count = 0;
+            if (comboBox_dir.SelectedItem == null)
+            {
+                comboBox_dir.SelectedItem = "2022-2023";
+            }
             string directory = comboBox_dir.SelectedItem.ToString();
             FirebaseResponse res = client.Get(@"StudentList/"+directory);
             Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
