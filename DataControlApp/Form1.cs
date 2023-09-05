@@ -392,41 +392,50 @@ namespace DataControlApp{
             double girilenLgsPuan = Convert.ToDouble(txt_LgsPuanı.Text);
             double girilenYüzdelik = Convert.ToDouble(txt_yüzde.Text);
             long girilenNOno = Convert.ToInt64(txt_tcno.Text);
+            int yanlisSoru = Convert.ToInt32(txt_yanlisSoru.Text);
+            int bosSoru = Convert.ToInt32(txt_bosSoru.Text);
+
 
             bool girilenYatılılık = false;
+            girilenYatılılık = boolTostring(txt_yatılılık.Text, girilenYatılılık);
+            bool burs = false;
+            burs = boolTostring(txt_burs.Text, burs);
 
 
-            if (txt_yatılılık.Text.ToLower() == "1")
+
+            string yerlesme = "Not graduated";
+            string siralama = "Not graduated";
+
+            if (checkBox_mezun.Checked == true)
             {
-                girilenYatılılık = true;
+                yerlesme = txt_yerlestigiYer.Text.ToLower();
+                siralama = txt_siralama.Text;
+                mezun = true;
             }
-            else if (txt_yatılılık.Text.ToLower() == "0")
+
+
+            string directory = comboBox_dir.SelectedItem.ToString();
+            if (mezun != true)
             {
-                girilenYatılılık = false;
-            }
-            else
-            {
-                MessageBox.Show("Hatalı Yatılılık Bilgisi", "Hata");
+                yerlesme = "Not graduated";
+                siralama = "Not graduated";
             }
 
+            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan, yanlisSoru, burs, bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(), txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(), yerlesme, siralama);
 
-
-
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, girilenAnnetelno, girilenBabatelno, txt_hobiler.Text, girilenYüzdelik, girilenNOno, txt_babaisim.Text, txt_babameslek.Text, girilenLgsPuan);
             //Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
-            client.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
-            client2.Set("StudentList/" + "Öğrenci" + girilenSirano, o2);
-            client2.Update("StudentList/" + "Öğrenci" + girilenSirano, o2);
+            client.Update($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text, o2);
+            client2.Set($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text, o2);
+            client2.Update($"StudentList/{directory}" + "Öğrenci" +txt_sirano.Text, o2);
             fetchData(client);
         }
 
         private void DeleteData_ogrenci(IFirebaseClient client)
         {
-            int girilenSirano = Convert.ToInt32(txt_sirano.Text);
+            string directory = comboBox_dir.SelectedItem.ToString();
 
-
-            client.Delete("StudentList/" + "Öğrenci" + girilenSirano);
-            client2.Delete("StudentList/" + "Öğrenci" + girilenSirano);
+            client.Delete($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text);
+            client2.Delete($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text);
             fetchData(client);
         }
 
@@ -494,7 +503,8 @@ namespace DataControlApp{
         }
         private void fetchData(IFirebaseClient client){
             int count = 0;
-            FirebaseResponse res = client.Get(@"StudentList");
+            string directory = comboBox_dir.SelectedItem.ToString();
+            FirebaseResponse res = client.Get(@"StudentList/"+directory);
             Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
             öğrenciler_list = new List<Ogrenci>(data.Values);
             foreach (Ogrenci og in öğrenciler_list){

@@ -42,29 +42,6 @@ namespace DataControlApp
         {
         }
 
-
-        public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno,long babatelno, string hobi, double girişyüzdesi,long tcno,string babaisim,string babameslek, double lgsPuan)
-        {
-            this.sirano = sirano;
-            this.isim = isim;
-            this.soyisim = soyisim;
-            this.numara = numara;
-            this.sınıf = sınıf;
-            this.şube = şube;
-            this.yatılılık = yatılılık;
-            this.telno = telno;
-            this.anneisim = anneisim;
-            this.annemeslek = annemeslek;
-            this.annetelno = annetelno;
-            this.babatelno = babatelno;
-            this.hobi = hobi;
-            this.girişyüzdesi = girişyüzdesi;
-            this.tcno=tcno;
-            this.babaisim = babaisim;
-            this.babameslek = babameslek;
-            this.lgsPuan = lgsPuan;
-        }
-
         public Ogrenci(int sirano, string isim, string soyisim, int numara, int sınıf, char şube, bool yatılılık, long telno, string anneisim, string annemeslek, long annetelno, long babatelno, string hobi, double girişyüzdesi, long tcno, string babaisim, string babameslek, double lgsPuan,int yanlisSoru,bool burs, int bosSoru, string oBeklenti, string dogumGunu, string cinsiyet, string memleket,string yerlestigiYer,string siralama)
         {
             this.sirano = sirano;
