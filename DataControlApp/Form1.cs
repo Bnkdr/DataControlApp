@@ -152,7 +152,8 @@ namespace DataControlApp{
         }
 
         private void SearchOgrenciById(IFirebaseClient client, String sira){
-            FirebaseResponse result = client.Get(@"StudentList/Öğrenci" + sira);
+            string directory = comboBox_dir.SelectedItem.ToString();
+            FirebaseResponse result = client.Get(@"StudentList/"+directory+"/"+"Öğrenci" + sira);
             Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
             string ismi = Convert.ToString(ogrenci_result.isim);
             string soyismi = Convert.ToString(ogrenci_result.soyisim);
