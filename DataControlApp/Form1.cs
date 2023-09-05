@@ -425,9 +425,9 @@ namespace DataControlApp{
             Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan, yanlisSoru, burs, bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(), txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(), yerlesme, siralama);
 
             //Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
-            client.Update($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text, o2);
-            client2.Set($"StudentList/{directory}" + "Öğrenci" + txt_sirano.Text, o2);
-            client2.Update($"StudentList/{directory}" + "Öğrenci" +txt_sirano.Text, o2);
+            client.Update($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+            client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+            client2.Update($"StudentList/{directory}/" + "Öğrenci" +txt_sirano.Text, o2);
             fetchData(client);
         }
 
