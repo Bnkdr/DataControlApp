@@ -42,6 +42,7 @@ namespace DataControlApp{
         }
 
         List<Ogrenci> öğrenciler_list;
+        Dictionary<string, bool> changed_list = new Dictionary<string, bool>();
         private void Form1_Load(object sender, EventArgs e)
         {
             try{
@@ -53,12 +54,8 @@ namespace DataControlApp{
                 MessageBox.Show("there was a problem in your internet");
             }
 
-            fetchData(client);
-            
-          //  foreach(Ogrenci o in öğrenciler_list){
-          //      MessageBox.Show(o.sirano + "  "+o.isim + "  " + o.soyisim+" "+o.numara);
-         //   }
-         
+            string directory = "2022-2023";
+            fetchData(client,directory);
         }
 
         
@@ -77,12 +74,51 @@ namespace DataControlApp{
         private void btn_ara_Click_1(object sender, EventArgs e){
              // Kadir was here haha  
             if (txt_sirano.Text != ""){
-                SearchOgrenciById(client, txt_sirano.Text);
+                if (comboBox_dir.SelectedItem != null)
+                {
+                    string directory = comboBox_dir.SelectedItem.ToString();
+                    SearchOgrenciById(client, txt_sirano.Text,directory);
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen yıl seçimi yapınız.");
+                }
+                
             }else if(txt_isim.Text !="" && txt_soyisim.Text != ""){
+                if (comboBox_dir.SelectedItem != null)
+                {
+                    string directory = comboBox_dir.SelectedItem.ToString();
+                    if (txt_isim.Text != null&&txt_soyisim.Text!=null)
+                    {
+                        SearchOgrenciByNameAndSurname(client, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), directory);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lütfen Eksik isim veya soyismi giriniz");
+                    }
 
-                SearchOgrenciByNameAndSurname(client, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower());
-            }else if(txt_numara.Text != ""){
-                SearchOgrenciByNumber(client, txt_numara.Text.ToLower());
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen yıl seçimi yapınız.");
+                }
+
+            }
+            else if(txt_numara.Text != ""){
+                if (comboBox_dir.SelectedItem != null)
+                {
+                    string directory = comboBox_dir.SelectedItem.ToString();
+                    SearchOgrenciByNumber(client, txt_numara.Text.ToLower(),directory);
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen yıl seçimini yapınız");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen arama kriterlerinden birini giriniz.(Sıra Numarası, Okul Numarası, İsim-Soyisim)");
             }
          }
           
@@ -151,8 +187,8 @@ namespace DataControlApp{
             UpdateData_idare(client);
         }
 
-        private void SearchOgrenciById(IFirebaseClient client, String sira){
-            string directory = comboBox_dir.SelectedItem.ToString();
+        private void SearchOgrenciById(IFirebaseClient client, String sira,string directory){
+            fetchData(client, directory);
             FirebaseResponse result = client.Get(@"StudentList/"+directory+"/"+"Öğrenci" + sira);
             Ogrenci ogrenci_result = result.ResultAs<Ogrenci>();
             string ismi = Convert.ToString(ogrenci_result.isim);
@@ -184,6 +220,15 @@ namespace DataControlApp{
                 string lgsPuani = Convert.ToString(ogrenci_result.lgsPuan);
                 txt_LgsPuanı.Text = lgsPuani;
             }
+            string yanlisSorusu = ogrenci_result.yanlisSoru.ToString();
+            string bursu = ogrenci_result.burs.ToString();
+            string bosSorusu = ogrenci_result.bosSoru.ToString();
+            string oBeklentisi = ogrenci_result.oBeklenti;
+            string DogumGunu = ogrenci_result.DogumGunu;
+            string cinsiyet = ogrenci_result.cinsiyet;
+            string memleket = ogrenci_result.memleket;
+            string yerlestigiYer = ogrenci_result.yerlestigiYer;
+            string siralama = ogrenci_result.siralama;
             txt_isim.Text = ismi;
             txt_soyisim.Text = soyismi;
             txt_sirano.Text = sira_nosu;
@@ -200,12 +245,21 @@ namespace DataControlApp{
             txt_babatelno.Text = baba_telefon_numarasi;
             txt_hobiler.Text = hobileri;
             txt_yüzde.Text = yüzdeliği;
+            txt_yanlisSoru.Text = yanlisSorusu;
+            txt_burs.Text = bursu;
+            txt_bosSoru.Text = bosSorusu;
+            txt_oBeklenti.Text = oBeklentisi;
+            txt_dogumGunu.Text = DogumGunu;
+            txt_cinsiyet.Text = cinsiyet;
+            txt_memleket.Text = memleket;
+            txt_yerlestigiYer.Text = yerlestigiYer;
+            txt_siralama.Text = siralama;
            
         }
 
-        private void SearchOgrenciByNameAndSurname(IFirebaseClient client, String name, String surname)
+        private void SearchOgrenciByNameAndSurname(IFirebaseClient client, String name, String surname,string directory)
         {
-            fetchData(client);
+            fetchData(client,directory);
             foreach(Ogrenci o in öğrenciler_list){
             if(name.ToLower().Equals(o.isim.ToLower()) && surname.ToLower().Equals(o.soyisim.ToLower())) {
                     string ismi = Convert.ToString(o.isim);
@@ -234,6 +288,15 @@ namespace DataControlApp{
                         string lgsPuani = Convert.ToString(o.lgsPuan);
                         txt_LgsPuanı.Text = lgsPuani;
                     }
+                    string yanlisSorusu = o.yanlisSoru.ToString();
+                    string bursu = o.burs.ToString();
+                    string bosSorusu = o.bosSoru.ToString();
+                    string oBeklentisi = o.oBeklenti;
+                    string DogumGunu = o.DogumGunu;
+                    string cinsiyet = o.cinsiyet;
+                    string memleket = o.memleket;
+                    string yerlestigiYer = o.yerlestigiYer;
+                    string siralama = o.siralama;
                     txt_isim.Text = ismi;
                     txt_soyisim.Text = soyismi;
                     txt_sirano.Text = sira_nosu;
@@ -250,13 +313,22 @@ namespace DataControlApp{
                     txt_babatelno.Text = baba_telefon_numarasi;
                     txt_hobiler.Text = hobileri;
                     txt_yüzde.Text = yüzdeliği;
+                    txt_yanlisSoru.Text = yanlisSorusu;
+                    txt_burs.Text = bursu;
+                    txt_bosSoru.Text = bosSorusu;
+                    txt_oBeklenti.Text = oBeklentisi;
+                    txt_dogumGunu.Text = DogumGunu;
+                    txt_cinsiyet.Text = cinsiyet;
+                    txt_memleket.Text = memleket;
+                    txt_yerlestigiYer.Text = yerlestigiYer;
+                    txt_siralama.Text = siralama;
                 }
             }
         }
 
-        private void SearchOgrenciByNumber(IFirebaseClient client, String numara)
+        private void SearchOgrenciByNumber(IFirebaseClient client, String numara,string directory)
         {
-            fetchData(client);
+            fetchData(client,directory);
             foreach (Ogrenci o in öğrenciler_list)
             {
                 if (numara.ToLower().Equals(Convert.ToString(o.numara).ToLower())){
@@ -290,6 +362,15 @@ namespace DataControlApp{
                         string lgsPuani = Convert.ToString(o.lgsPuan);
                         txt_LgsPuanı.Text = lgsPuani;
                     }
+                    string yanlisSorusu = o.yanlisSoru.ToString();
+                    string bursu =o.burs.ToString();
+                    string bosSorusu = o.bosSoru.ToString();
+                    string oBeklentisi = o.oBeklenti;
+                    string DogumGunu = o.DogumGunu;
+                    string cinsiyet = o.cinsiyet;
+                    string memleket = o.memleket;
+                    string yerlestigiYer = o.yerlestigiYer;
+                    string siralama = o.siralama;
                     txt_isim.Text = ismi;
                     txt_soyisim.Text = soyismi;
                     txt_sirano.Text = sira_nosu;
@@ -306,6 +387,15 @@ namespace DataControlApp{
                     txt_babatelno.Text = baba_telefon_numarasi;
                     txt_hobiler.Text = hobileri;
                     txt_yüzde.Text = yüzdeliği;
+                    txt_yanlisSoru.Text = yanlisSorusu;
+                    txt_burs.Text = bursu;
+                    txt_bosSoru.Text = bosSorusu;
+                    txt_oBeklenti.Text = oBeklentisi;
+                    txt_dogumGunu.Text = DogumGunu;
+                    txt_cinsiyet.Text = cinsiyet;
+                    txt_memleket.Text = memleket;
+                    txt_yerlestigiYer.Text = yerlestigiYer;
+                    txt_siralama.Text = siralama;
                 }
             }
         }
@@ -365,19 +455,29 @@ namespace DataControlApp{
             }
 
 
-            string directory = comboBox_dir.SelectedItem.ToString();
             if(mezun!=true)
             {
                 yerlesme = "Not graduated";
                 siralama = "Not graduated";
             }
+            if (comboBox_dir.SelectedItem != null)
+            {
 
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan,yanlisSoru,burs,bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(),txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(),yerlesme,siralama);
+                string directory = comboBox_dir.SelectedItem.ToString();
+                Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan, yanlisSoru, burs, bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(), txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(), yerlesme, siralama);
 
-            client.Set($"StudentList/{directory}/" + "Öğrenci" +txt_sirano.Text, o2);
-            client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
-            
-            MessageBox.Show("data inserted successfully");
+                client.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+                client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+
+                MessageBox.Show("data inserted successfully");
+                fetchData(client, directory);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen yıl seçimi yapınız.");
+            }
+
+           
         }
 
 
@@ -413,31 +513,52 @@ namespace DataControlApp{
                 siralama = txt_siralama.Text;
                 mezun = true;
             }
-
-
-            string directory = comboBox_dir.SelectedItem.ToString();
             if (mezun != true)
             {
                 yerlesme = "Not graduated";
                 siralama = "Not graduated";
             }
 
-            Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan, yanlisSoru, burs, bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(), txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(), yerlesme, siralama);
+            if (comboBox_dir.SelectedItem != null)
+            {
+                string directory = comboBox_dir.SelectedItem.ToString();
 
-            //Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
-            client.Update($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
-            client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
-            client2.Update($"StudentList/{directory}/" + "Öğrenci" +txt_sirano.Text, o2);
-            fetchData(client);
+
+
+                Ogrenci o2 = new Ogrenci(girilenSirano, txt_isim.Text.ToLower(), txt_soyisim.Text.ToLower(), girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text.ToLower(), txt_annemeslek.Text.ToLower(), girilenAnnetelno, girilenBabatelno, txt_hobiler.Text.ToLower(), girilenYüzdelik, girilenNOno, txt_babaisim.Text.ToLower(), txt_babameslek.Text.ToLower(), girilenLgsPuan, yanlisSoru, burs, bosSoru, txt_oBeklenti.Text.ToLower(), txt_dogumGunu.Text.ToLower(), txt_cinsiyet.Text.ToLower(), txt_memleket.Text.ToLower(), yerlesme, siralama);
+
+                //Ogrenci o = new Ogrenci(girilenSirano, txt_isim.Text, txt_soyisim.Text, girilenNumara, girilenSınıf, girilenSube, girilenYatılılık, girilenTelno, txt_anneisim.Text, txt_annemeslek.Text, txt_babaisim.Text, txt_babameslek.Text,girilenAnnetelno,girilenBabatelno);
+                client.Update($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+                client2.Set($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+                client2.Update($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text, o2);
+                fetchData(client, directory);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen arama yılını giriniz");
+            }
+            
         }
 
         private void DeleteData_ogrenci(IFirebaseClient client)
         {
-            string directory = comboBox_dir.SelectedItem.ToString();
+            if (comboBox_dir.SelectedItem != null)
+            {
 
-            client.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
-            client2.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
-            fetchData(client);
+                string directory = comboBox_dir.SelectedItem.ToString();
+                client.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
+                client2.Delete($"StudentList/{directory}/" + "Öğrenci" + txt_sirano.Text);
+
+                fetchData(client, directory);
+
+            }
+            else
+            {
+                MessageBox.Show("Lütfen yıl seçimi yapınız.");
+            }
+
+          
+            
         }
 
         private void InsertData_öğretmen(IFirebaseClient client)
@@ -451,7 +572,7 @@ namespace DataControlApp{
 
             MessageBox.Show("Data inserted successfully", "Bilgilendirme");
 
-            temizle();
+
         }
         private void UpdateData_öğretmen(IFirebaseClient client)
         {
@@ -481,7 +602,6 @@ namespace DataControlApp{
 
             MessageBox.Show("Data inserted successfully;", "Bilgilendirme");
 
-            temizle();
         }
         private void UpdateData_idare(IFirebaseClient client)
         {
@@ -502,23 +622,29 @@ namespace DataControlApp{
             client.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
             client2.Delete("AdministrationList/" + "İdareci" + girilenİdareSirano);
         }
-        private void fetchData(IFirebaseClient client){
+        private void fetchData(IFirebaseClient client,string directory){
             int count = 0;
-            if (comboBox_dir.SelectedItem == null)
-            {
-                comboBox_dir.SelectedItem = "2022-2023";
-            }
-            string directory = comboBox_dir.SelectedItem.ToString();
+
             FirebaseResponse res = client.Get(@"StudentList/"+directory);
             Dictionary<string, Ogrenci> data = JsonConvert.DeserializeObject<Dictionary<string, Ogrenci>>(res.Body.ToString());
-            öğrenciler_list = new List<Ogrenci>(data.Values);
-            foreach (Ogrenci og in öğrenciler_list){
-                count++;
-               
-                //    MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
-
+            if (data == null)
+            {
+                MessageBox.Show("Seçtiğiniz yılda girilmiş öğrenci verisi bulunmamaktadır");
+                öğrenciler_list =new List<Ogrenci>();
             }
-            client.Set(@"IndexCount", count);
+            else
+            {
+                öğrenciler_list = new List<Ogrenci>(data.Values);
+                foreach (Ogrenci og in öğrenciler_list)
+                {
+                    count++;
+
+                    //    MessageBox.Show("oldu aldik" +"  "+ og.sirano+" "+og.isim+" "+öğrenciler_list.Count+" "+count);
+
+                }
+                client.Set(@"IndexCount", count);
+            }
+            
         }
 
         private void label28_Click(object sender, EventArgs e)
@@ -531,9 +657,10 @@ namespace DataControlApp{
 
         }
 
-        private async void searchStudentByName(IFirebaseClient client)
+        private async void searchStudentByName(IFirebaseClient client,string directory)
         {
-            fetchData(client);
+
+            fetchData(client,directory);
           
             foreach (Ogrenci og in öğrenciler_list)
             {
@@ -558,11 +685,12 @@ namespace DataControlApp{
       
 
 
-        private void searchStudentBySurname(IFirebaseClient client)
+        private void searchStudentBySurname(IFirebaseClient client,string directory)
         {
             string girilenSoyisim = txt_soyisimleara.Text;
 
-            fetchData(client);
+
+            fetchData(client,directory);
             foreach(Ogrenci og in öğrenciler_list)
             {
                 if(og.soyisim.ToLower().Equals(girilenSoyisim.ToLower()))
@@ -575,13 +703,35 @@ namespace DataControlApp{
         private void btn_isimleara_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            searchStudentByName(client);
+            if (cmbox_aramayil.SelectedItem != null)
+            {
+                string directory = cmbox_aramayil.SelectedItem.ToString();
+                fetchData(client, directory);
+                searchStudentByName(client, directory);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen arayacağınız yılları seçiniz.");
+            }
+            
+
         }
 
         private void btn_soyisimleara_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            searchStudentBySurname(client);
+            if (cmbox_aramayil.SelectedItem != null)
+            {
+                string directory = cmbox_aramayil.SelectedItem.ToString();
+                fetchData(client, directory);
+                searchStudentBySurname(client, directory);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen arayacağınız yılları seçiniz.");
+            }
+           
+            
             
         }
 
@@ -610,6 +760,271 @@ namespace DataControlApp{
                 txt_siralama.Visible = false;
                 lbl_siralama.Visible = false;
             }
+        }
+        List<Ogrenci> filter = new List<Ogrenci>();
+       
+
+        private void btn_topluara_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            if (cmbox_aramayil.SelectedItem != null)
+            {
+                string directory = cmbox_aramayil.SelectedItem.ToString();
+                fetchData(client, directory);
+                if (filter.Count != 0)
+                {
+                    filter=new List<Ogrenci>();
+                }
+
+
+                SearchStudentFiltered();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen arayacağınız yılları seçiniz.");
+            }
+
+           
+
+        }
+
+        async void SearchStudentFiltered()
+        {
+           
+
+            if (txt_isimleara.Text!=string.Empty)
+            {
+                for(int i=0;i<öğrenciler_list.Count;i++)
+                {
+                    if (öğrenciler_list[i].isim.ToLower().Contains(txt_isimleara.Text.ToLower()))
+                    {
+                        filter.Add(öğrenciler_list[i]);
+                    }
+                }
+            }
+            if (txt_soyisimleara.Text!=string.Empty)
+            {
+                if (filter.Count==0)
+                {
+                    for(int i=0;i<öğrenciler_list.Count;i++)
+                    {
+                        if (öğrenciler_list[i].soyisim.ToLower()==txt_soyisimleara.Text.ToLower())
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i=0;i<filter.Count;i++)
+                    {
+                        if (filter[i].soyisim!=txt_soyisimleara.Text.ToLower())
+                        {
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+
+            }
+            if (txt_toptelno.Text!=string.Empty)
+            {
+                if (filter.Count == 0)
+                {
+                    for(int i=0;i<öğrenciler_list.Count; i++)
+                    {
+                        if (öğrenciler_list[i].telno.ToString()==txt_toptelno.Text)
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+
+                    for (int i=0;i<filter.Count;i++)
+                    {
+                        if (filter[i].telno.ToString()!=txt_toptelno.Text)
+                        {
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+
+            }
+            if (txt_topdogtar.Text!=string.Empty)
+            {
+                if (filter.Count == 0)
+                {
+                    for(int i=0;i<öğrenciler_list.Count;i++)
+                    {
+                        if (öğrenciler_list[i].DogumGunu.Contains(txt_topdogtar.Text))
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i=0;i<filter.Count;i++)
+                    {
+                        if (!filter[i].DogumGunu.Contains(txt_topdogtar.Text))
+                        {
+
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+
+            }
+            if (txt_topsınıf.Text!=string.Empty)
+            {
+                if (filter.Count ==0)
+                {
+                    for(int i=0;i<öğrenciler_list.Count;i++)
+                    {
+                        if (öğrenciler_list[i].sınıf.ToString()==txt_topsınıf.Text.ToLower())
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    for(int i=0;i<filter.Count;i++)
+                    {
+                        if (filter[i].sınıf.ToString()!=txt_topsınıf.Text)
+                        {
+                            
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i--;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+            if (txt_topşube.Text!=string.Empty)
+            {
+                if (filter.Count == 0)
+                {
+                    for(int i=0;i<öğrenciler_list.Count;i++)
+                    {
+                        if (öğrenciler_list[i].şube.ToString()==txt_topşube.Text.ToUpper())
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+
+                    for (int i=0;i<filter.Count;i++)
+                    {
+                        if (filter[i].şube.ToString()!=txt_topşube.Text.ToUpper())
+                        {
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i-=2;
+                            }
+                        }
+                    }
+                }
+
+            }
+            if (checkbox_yatililik.Checked)
+            {
+                if (filter.Count == 0)
+                {
+                    for(int i = 0; i < öğrenciler_list.Count;i++)
+                    {
+                        if (öğrenciler_list[i].yatılılık == true)
+                        {
+                            filter.Add(öğrenciler_list[i]);
+                        }
+                    }
+                }
+                else
+                {
+
+                    for (int i=0;i<filter.Count;i++)
+                    {
+                        if (filter[i].yatılılık == false)
+                        {
+                            filter.Remove(filter[i]);
+
+                            if (i != 0)
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            foreach (Ogrenci og in filter)
+            {
+                dataGridView1.Rows.Add(og.isim, og.soyisim, og.sirano, og.sınıf + "/" + og.şube, og.numara, og.yatılılık, og.telno, og.DogumGunu, og.girişyüzdesi);
+            }
+        }
+
+
+
+
+        private void txt_isimleara_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_soyisimleara_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txt_toptelno_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_topdogtar_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txt_topsınıf_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txt_topşube_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void checkbox_yatililik_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
